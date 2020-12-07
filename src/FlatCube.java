@@ -1,13 +1,14 @@
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class FlatCube {
-    private char[][] cube = {{'R', 'R', 'W'},
+    private final char[][] cube = {{'R', 'R', 'W'},
             {'G', 'C', 'W'},
             {'G', 'B', 'B'}};
     private String input;
     private boolean direction;
     private char a;
-    private Scanner s = new Scanner(System.in);
+    private final Scanner s = new Scanner(System.in);
 
     public FlatCube() {
         printCube();
@@ -28,13 +29,19 @@ public class FlatCube {
         System.out.print("\nCUBE> ");
         input = s.nextLine();
 
-        //Todo: '가 붙어있는 경우에 따라 setDriec 호출하기 어떻게 문자열을 나누지..?
 
-
-        for (int i = 0; i < input.length(); i++){
-//            setDirec(input);      //Todo: setDirec 함수 위치 설정
-            direction = true;
+        for (int i = 0; i < input.length(); i++) {
             System.out.println();
+
+            if (input.charAt(i) == '\'') {
+                continue;
+            }
+            if (input.charAt(i + 1) != '\'') {  //Todo: i + 1 때문에 indexOutOfBounds 에러뜸
+                direction = true;
+            }
+            if (input.charAt(i + 1) == '\'') {
+                direction = false;
+            }
             a = input.charAt(i);
             System.out.println(a);
             move(a);
@@ -57,32 +64,21 @@ public class FlatCube {
             moveL(2);
         }
 
-        if(direction && a == 'R'){
+        if (direction && a == 'R') {
             moveU(2);
         }
-        if(!direction && a == 'R'){
+        if (!direction && a == 'R') {
             moveD(2);
         }
 
-        if(direction && a == 'L'){
+        if (direction && a == 'L') {
             moveD(0);
         }
-        if(!direction && a == 'L'){
+        if (!direction && a == 'L') {
             moveU(0);
         }
 
         printCube();
-    }
-
-    private boolean setDirec(String input) {
-        if (input.contains("'")) {
-            direction = true;
-        }
-        if (input.contains("'")) {
-            direction = false;
-        }
-
-        return direction;
     }
 
     private void moveL(int idx) {
