@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Words {
     private String line;
-    private String[] arr = new String[3];
+    private String[] arr;
     private String word;
     private int num;
     private boolean direction;
@@ -71,7 +71,6 @@ public class Words {
 
         return wordArr;
     }
-
 
     public static void main(String[] args) {
         Words w = new Words();
