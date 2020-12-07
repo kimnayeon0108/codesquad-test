@@ -6,10 +6,10 @@ public class Words {
     private String word;
     private int num;
     private boolean direction;
+    private char[] wordArr = new char[word.length()];
     private Scanner s = new Scanner(System.in);
 
-
-    public void splitWords(){
+    private void splitLine(){
         line = s.nextLine();
         arr = line.split( "\\s+");
 
@@ -23,9 +23,25 @@ public class Words {
         }
     }
 
+    private void getWordArr(){
+        for(int i = 0; i < wordArr.length; i++){
+            wordArr[i] = word.charAt(i);
+        }
+    }
+
+    private void changeChar(){
+
+
+
+    }
+
 
     public static void main(String[] args) {
-       
+        Words w = new Words();
+
+        w.splitLine();
+        w.changeChar();
+        System.out.println(w.word);
 
     }
 }
