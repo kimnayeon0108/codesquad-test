@@ -24,14 +24,9 @@ public class Words {
         }
     }
 
-    private void getWordArr(){
-        wordArr = new char[word.length()];
-        for(int i = 0; i < wordArr.length; i++){
-            wordArr[i] = word.charAt(i);
-        }
-    }
-
     private char[] changeChar(){
+        wordArr = word.toCharArray();
+
         char temp = wordArr[wordArr.length - 1];
 
         for(int i = wordArr.length - 1; i > 0 ; i--){
@@ -46,7 +41,6 @@ public class Words {
         Words w = new Words();
 
         w.splitLine();
-        w.getWordArr();
         w.changeChar();
         System.out.println(String.valueOf(w.wordArr));
 
