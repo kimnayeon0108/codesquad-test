@@ -28,24 +28,38 @@ public class FlatCube {
 
         setDirec(input);
 
-        if(direction && input.charAt(0) == 'U'){
+        if (direction && input.charAt(0) == 'U') {
             moveL(0);
         }
-        if(!direction && input.charAt(0) == 'U'){
+        if (!direction && input.charAt(0) == 'U') {
             moveR(0);
         }
 
-        if(direction && input.charAt(0) == 'B'){
+        if (direction && input.charAt(0) == 'B') {
+            moveR(2);
+        }
+        if (!direction && input.charAt(0) == 'B') {
             moveL(2);
         }
-        if(!direction && input.charAt(0) == 'B'){
-            moveR(2);
+
+        if(direction && input.charAt(0) == 'R'){
+            moveU(2);
+        }
+        if(!direction && input.charAt(0) == 'R'){
+            moveD(2);
+        }
+
+        if(direction && input.charAt(0) == 'L'){
+            moveD(0);
+        }
+        if(!direction && input.charAt(0) == 'L'){
+            moveU(0);
         }
 
         printCube();
     }
 
-    private boolean setDirec(String input){
+    private boolean setDirec(String input) {
         if (!input.contains("'")) {
             direction = true;
         }
@@ -53,10 +67,7 @@ public class FlatCube {
             direction = false;
         }
 
-        if (input.charAt(0) == 'L' || input.charAt(0)== 'B'){
-            direction = !direction;
-        }
-        return  direction;
+        return direction;
     }
 
     private void moveL(int idx) {
@@ -65,23 +76,33 @@ public class FlatCube {
         for (int i = 0; i < cube.length - 1; i++) {
             cube[idx][i] = cube[idx][i + 1];
         }
-        cube[idx][2] = temp;
+        cube[idx][cube.length - 1] = temp;
     }
-    
-    private void moveR(int idx){
+
+    private void moveR(int idx) {
         char temp = cube[idx][cube[idx].length - 1];
 
-        for(int i = cube[idx].length - 1; i > 0; i--){
+        for (int i = cube[idx].length - 1; i > 0; i--) {
             cube[idx][i] = cube[idx][i - 1];
         }
         cube[idx][0] = temp;
     }
 
-    private void moveU(int idx){
+    private void moveU(int idx) {
+        char temp = cube[0][idx];
 
+        for (int i = 0; i < cube.length - 1; i++) {
+            cube[i][idx] = cube[i + 1][idx];
+        }
+        cube[cube.length - 1][idx] = temp;
     }
 
-    private void moveD(int idx){
+    private void moveD(int idx) {
+        char temp = cube[cube.length - 1][idx];
+        for (int i = cube.length - 1; i > 0; i--) {
+            cube[i][idx] = cube[i - 1][idx];
+        }
+        cube[0][idx] = temp;
 
     }
 
