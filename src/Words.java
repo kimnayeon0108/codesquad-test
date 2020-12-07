@@ -10,29 +10,40 @@ public class Words {
     private char[] wordArr;
     private Scanner s = new Scanner(System.in);
 
-    private void splitLine(){
+    private void splitLine() {
         line = s.nextLine();
-        arr = line.split( "\\s+");
+        arr = line.split("\\s+");
 
         word = arr[0];
         num = Integer.parseInt(arr[1]);
-        if (arr[2].equalsIgnoreCase("l")){
+        if (arr[2].equalsIgnoreCase("l")) {
             direction = true;
         }
-        if (arr[2].equalsIgnoreCase("r")){
+        if (arr[2].equalsIgnoreCase("r")) {
             direction = false;
         }
+
+        wordArr = word.toCharArray();
     }
 
-    private char[] changeChar(){
-        wordArr = word.toCharArray();
-
+    private char[] changeToR() {
         char temp = wordArr[wordArr.length - 1];
 
-        for(int i = wordArr.length - 1; i > 0 ; i--){
-            wordArr[i] = wordArr[i-1];
+        for (int i = wordArr.length - 1; i > 0; i--) {
+            wordArr[i] = wordArr[i - 1];
         }
         wordArr[0] = temp;
+        return wordArr;
+    }
+
+    private char[] changeToL() {
+        char temp = wordArr[0];
+
+        for (int i = 0; i < wordArr.length - 1; i++) {
+            wordArr[i] = wordArr[i + 1];
+        }
+        wordArr[wordArr.length - 1] = temp;
+
         return wordArr;
     }
 
@@ -41,7 +52,7 @@ public class Words {
         Words w = new Words();
 
         w.splitLine();
-        w.changeChar();
+        w.changeToL();
         System.out.println(String.valueOf(w.wordArr));
 
     }
