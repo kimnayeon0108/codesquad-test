@@ -6,11 +6,13 @@ public class FlatCube {
             {'G', 'B', 'B'}};
     private String input;
     private boolean direction;
+    private char a;
     private Scanner s = new Scanner(System.in);
 
     public FlatCube() {
         printCube();
-        move();
+        getInput();
+
     }
 
     private void printCube() {
@@ -22,37 +24,50 @@ public class FlatCube {
         }
     }
 
-    private void move() {
+    private void getInput() {
         System.out.print("\nCUBE> ");
         input = s.nextLine();
 
-        setDirec(input);
+        //Todo: '가 붙어있는 경우에 따라 setDriec 호출하기 어떻게 문자열을 나누지..?
 
-        if (direction && input.charAt(0) == 'U') {
+
+        for (int i = 0; i < input.length(); i++){
+//            setDirec(input);      //Todo: setDirec 함수 위치 설정
+            direction = true;
+            System.out.println();
+            a = input.charAt(i);
+            System.out.println(a);
+            move(a);
+        }
+    }
+
+    private void move(char a) {
+
+        if (direction && a == 'U') {
             moveL(0);
         }
-        if (!direction && input.charAt(0) == 'U') {
+        if (!direction && a == 'U') {
             moveR(0);
         }
 
-        if (direction && input.charAt(0) == 'B') {
+        if (direction && a == 'B') {
             moveR(2);
         }
-        if (!direction && input.charAt(0) == 'B') {
+        if (!direction && a == 'B') {
             moveL(2);
         }
 
-        if(direction && input.charAt(0) == 'R'){
+        if(direction && a == 'R'){
             moveU(2);
         }
-        if(!direction && input.charAt(0) == 'R'){
+        if(!direction && a == 'R'){
             moveD(2);
         }
 
-        if(direction && input.charAt(0) == 'L'){
+        if(direction && a == 'L'){
             moveD(0);
         }
-        if(!direction && input.charAt(0) == 'L'){
+        if(!direction && a == 'L'){
             moveU(0);
         }
 
@@ -60,7 +75,7 @@ public class FlatCube {
     }
 
     private boolean setDirec(String input) {
-        if (!input.contains("'")) {
+        if (input.contains("'")) {
             direction = true;
         }
         if (input.contains("'")) {
