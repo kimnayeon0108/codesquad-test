@@ -26,7 +26,18 @@ public class Words {
         wordArr = word.toCharArray();
     }
 
-    private char[] changeToR() {
+    private void setDirec(Boolean direction, int num){
+        for(int i = 0; i < num; i++) {
+            if (direction) {
+                pushToL();
+            }
+            if (!direction) {
+                pushToR();
+            }
+        }
+    }
+
+    private char[] pushToR() {
         char temp = wordArr[wordArr.length - 1];
 
         for (int i = wordArr.length - 1; i > 0; i--) {
@@ -36,7 +47,7 @@ public class Words {
         return wordArr;
     }
 
-    private char[] changeToL() {
+    private char[] pushToL() {
         char temp = wordArr[0];
 
         for (int i = 0; i < wordArr.length - 1; i++) {
@@ -52,7 +63,7 @@ public class Words {
         Words w = new Words();
 
         w.splitLine();
-        w.changeToL();
+        w.setDirec(w.direction, w.num);
         System.out.println(String.valueOf(w.wordArr));
 
     }
