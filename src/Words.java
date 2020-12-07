@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Words {
@@ -6,7 +7,7 @@ public class Words {
     private String word;
     private int num;
     private boolean direction;
-    private char[] wordArr = new char[word.length()];
+    private char[] wordArr;
     private Scanner s = new Scanner(System.in);
 
     private void splitLine(){
@@ -24,15 +25,20 @@ public class Words {
     }
 
     private void getWordArr(){
+        wordArr = new char[word.length()];
         for(int i = 0; i < wordArr.length; i++){
             wordArr[i] = word.charAt(i);
         }
     }
 
-    private void changeChar(){
+    private char[] changeChar(){
+        char temp = wordArr[wordArr.length - 1];
 
-
-
+        for(int i = wordArr.length - 1; i > 0 ; i--){
+            wordArr[i] = wordArr[i-1];
+        }
+        wordArr[0] = temp;
+        return wordArr;
     }
 
 
@@ -40,8 +46,9 @@ public class Words {
         Words w = new Words();
 
         w.splitLine();
+        w.getWordArr();
         w.changeChar();
-        System.out.println(w.word);
+        System.out.println(String.valueOf(w.wordArr));
 
     }
 }
