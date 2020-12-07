@@ -10,7 +10,16 @@ public class Words {
     private char[] wordArr;
     private Scanner s = new Scanner(System.in);
 
+    public Words(){
+        while(true) {
+            splitLine();
+            setDirec(this.direction, this.num);
+            System.out.println(String.valueOf(wordArr));
+        }
+    }
+
     private void splitLine() {
+        System.out.print("> ");
         line = s.nextLine();
         arr = line.split("\\s+");
 
@@ -27,6 +36,11 @@ public class Words {
     }
 
     private void setDirec(Boolean direction, int num){
+        if(num < 0){
+            num = num * -1;
+            direction = !direction;
+        }
+
         for(int i = 0; i < num; i++) {
             if (direction) {
                 pushToL();
@@ -61,10 +75,6 @@ public class Words {
 
     public static void main(String[] args) {
         Words w = new Words();
-
-        w.splitLine();
-        w.setDirec(w.direction, w.num);
-        System.out.println(String.valueOf(w.wordArr));
 
     }
 }
