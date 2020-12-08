@@ -35,44 +35,45 @@ public class RubiksCube {
     }
 
     private void printCube() {
-        // B 면 출력
-        for (int i = 0; i < cube[0].length; i++) {
-            System.out.print("          ");
-            for (int j = 0; j < cube[0][i].length; j++) {
-                System.out.print(cube[0][i][j] + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
+
+        // B면 출력
+        printPage(0);
 
         // W, O, G, Y 면 출력
-        for(int i = 0; i < cube[0].length; i++) {
-            for (int j = 1; j < cube.length - 1; j++) {
-                for (int z = 0; z < cube[j][i].length; z++) {
-                    System.out.print(cube[j][i][z] + " ");
-                }
-                System.out.print("    ");
-            }
-            System.out.println();
+        for (int i = 0; i < cube[0].length; i++) {
+            printFourP(i);
         }
         System.out.println();
 
-        // R 면 출력
-        for (int i = 0; i < cube[5].length; i++) {
+        // R면 출력
+        printPage(5);
+    }
+
+    private void printPage(int a) {
+        for (int i = 0; i < cube[a].length; i++) {
             System.out.print("          ");
-            for (int j = 0; j < cube[5][i].length; j++) {
-                System.out.print(cube[5][i][j] + " ");
+            for (int j = 0; j < cube[a][i].length; j++) {
+                System.out.print(cube[a][i][j] + " ");
             }
             System.out.println();
         }
         System.out.println();
     }
 
-    private void moveF(){
+    private void printFourP(int i) {
+        for (int j = 1; j < cube.length - 1; j++) {
+            for (int z = 0; z < cube[j][i].length; z++) {
+                System.out.print(cube[j][i][z] + " ");
+            }
+            System.out.print("    ");
+        }
+        System.out.println();
+    }
+
+    private void moveF() {
         char[] temp = new char[3];
 
-        for(int i = 0; i < temp.length; i++){
-
+        for (int i = 0; i < temp.length; i++) {
             // 1면 값 temp 에 저장
             temp[i] = cube[1][i][2];
 
