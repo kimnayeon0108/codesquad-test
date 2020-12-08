@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class FlatCube {
-    private final char[][] cube = {{'R', 'R', 'W'},
+    private char[][] cube = {{'R', 'R', 'W'},
             {'G', 'C', 'W'},
             {'G', 'B', 'B'}};
     private String input;
