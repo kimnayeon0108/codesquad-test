@@ -19,7 +19,7 @@ public class FlatCube {
             System.out.print("\nCUBE> ");
             input = s.nextLine();
 
-            if (input.equals("Q")) {
+            if (input.equalsIgnoreCase("Q")) {
                 System.out.println("Bye Bye~");
                 return;
             }
