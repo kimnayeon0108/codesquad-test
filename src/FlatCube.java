@@ -12,7 +12,24 @@ public class FlatCube {
 
     public FlatCube() {
         printCube();
-        getInput();
+        while (true) {
+            System.out.print("\nCUBE> ");
+            input = s.nextLine();
+
+            if (input.equals("Q")) {
+                System.out.println("Bye Bye~");
+                return;
+            }
+
+            getAlphaNum();
+            getAlphaArr();
+
+            for(int i = 0; i <alphaArr.length; i++){
+                System.out.println();
+                System.out.println(alphaArr[i]);
+                move(alphaArr[i]);
+            }
+        }
     }
 
     private void printCube() {
@@ -23,21 +40,7 @@ public class FlatCube {
             System.out.println();
         }
     }
-
-    private void getInput() {
-        System.out.print("\nCUBE> ");
-        input = s.nextLine();
-
-        if (input.equals("Q")) {
-            System.out.println("Bye Bye~");
-            return;
-        }
-
-        getAlphaNum();
-        getAlphaArr();
-
-    }
-
+    
     private void getAlphaNum() {
         alphabet = 0;
 
@@ -74,9 +77,6 @@ public class FlatCube {
             if (i == input.length() - 1) {
                 alphaArr[j] = String.valueOf(input.charAt(i));
             }
-        }
-        for(String a : alphaArr){
-            System.out.println(a);
         }
 
         return alphaArr;
