@@ -1,13 +1,13 @@
 import java.util.Scanner;
-import java.util.StringTokenizer;
 
 public class FlatCube {
     private final char[][] cube = {{'R', 'R', 'W'},
             {'G', 'C', 'W'},
             {'G', 'B', 'B'}};
     private String input;
-    private boolean direction;
-    private char a;
+    private int alphabet;
+    private String[] alphaArr;
+
     private final Scanner s = new Scanner(System.in);
 
     public FlatCube() {
@@ -28,52 +28,71 @@ public class FlatCube {
         System.out.print("\nCUBE> ");
         input = s.nextLine();
 
-        if (input.contains("\'")) {
-            direction = false;
-        }
-        if (!input.contains("\'")) {
-            direction = true;
-        }
-        if (input.equalsIgnoreCase("Q")) {
+        getAlphaNum();
+        alphaArr = new String[alphabet];
+
+        if (input.equals("Q")) {
             System.out.println("Bye Bye~");
             return;
         }
-        for (int i = 0; i < input.length(); i++) {
-            System.out.println();
-            a = input.charAt(i);
-            System.out.println(a);
-            move(a);
-        }
+        getAlphaArr();
 
     }
 
-    private void move(char a) {
+    private void getAlphaArr() {
+        for (int i = 0; i < input.length(); i++) {
+            // input의 마지막 글자가 아니면, 다음글자에 /이 있는지 확인하기
+            if (i != input.length() - 1 || input.charAt(i) != '\'') {
+                int j = 0;
 
-        if (direction && a == 'U') {
+                if (input.charAt(i + 1) != '\'') {
+                    alphaArr[j] = input.substring(i, i + 1);
+                }
+                if (input.charAt(i + 1) == '\'') {
+                    alphaArr[j] = input.substring(i, i + 2);
+                }
+                j++;
+            }
+        }
+    }
+
+    private void getAlphaNum() {
+
+        alphabet = 0;
+
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == 'U' || input.charAt(i) == 'L'
+                    || input.charAt(i) == 'R' || input.charAt(i) == 'B') {
+                alphabet++;
+            }
+        }
+    }
+
+
+    private void move(String a) {
+
+        if (a.equals("U")) {
             moveL(0);
         }
-        if (!direction && a == 'U') {
+        if (a.equals("U'")) {
             moveR(0);
         }
-
-        if (direction && a == 'B') {
+        if (a.equals("B")) {
             moveR(2);
         }
-        if (!direction && a == 'B') {
+        if (a.equals("B'")) {
             moveL(2);
         }
-
-        if (direction && a == 'R') {
+        if (a.equals("R")) {
             moveU(2);
         }
-        if (!direction && a == 'R') {
+        if (a.equals("R'")) {
             moveD(2);
         }
-
-        if (direction && a == 'L') {
+        if (a.equals("L")) {
             moveD(0);
         }
-        if (!direction && a == 'L') {
+        if (a.equals("L'")) {
             moveU(0);
         }
 
