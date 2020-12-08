@@ -2,15 +2,14 @@ import java.util.Scanner;
 
 public class Words {
     private String line;
-    private String[] arr;
     private String word;
     private int num;
     private boolean direction;
     private char[] wordArr;
     private Scanner s = new Scanner(System.in);
 
-    public Words(){
-        while(true) {
+    public Words() {
+        while (true) {
             splitLine();
             setDirec(this.direction, this.num);
             System.out.println(String.valueOf(wordArr));
@@ -20,7 +19,7 @@ public class Words {
     private void splitLine() {
         System.out.print("> ");
         line = s.nextLine();
-        arr = line.split("\\s+");
+        String[] arr = line.split("\\s+");
 
         word = arr[0];
         num = Integer.parseInt(arr[1]);
@@ -34,13 +33,13 @@ public class Words {
         wordArr = word.toCharArray();
     }
 
-    private void setDirec(Boolean direction, int num){
-        if(num < 0){
+    private void setDirec(Boolean direction, int num) {
+        if (num < 0) {
             num = num * -1;
             direction = !direction;
         }
 
-        for(int i = 0; i < num; i++) {
+        for (int i = 0; i < num; i++) {
             if (direction) {
                 pushToL();
             }
