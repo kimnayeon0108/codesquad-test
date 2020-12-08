@@ -27,7 +27,7 @@ public class FlatCube {
             getAlphaNum(input);
             getAlphaArr();
 
-            for(int i = 0; i <alphaArr.length; i++){
+            for (int i = 0; i < alphaArr.length; i++) {
                 System.out.println();
                 System.out.println(alphaArr[i]);
                 move(alphaArr[i]);
@@ -66,7 +66,7 @@ public class FlatCube {
                 continue;
             }
 
-            // input의 마지막 글자가 아니면, 다음글자에 /이 있는지 확인하기
+            // input의 마지막 글자가 아니면, 다음글자에 '이 있는지 확인하기
             if (i != input.length() - 1 && input.charAt(i + 1) != '\'') {
                 alphaArr[j] = input.substring(i, i + 1);
                 j++;
