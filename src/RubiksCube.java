@@ -1,6 +1,10 @@
 public class RubiksCube {
     private char[][][] cube = new char[6][3][3];
 
+    private RubiksCube() {
+        getCube();
+    }
+
     private void getCube() {
         for (int z = 0; z < cube.length; z++) {
             switch (z) {
@@ -35,7 +39,6 @@ public class RubiksCube {
     }
 
     private void printCube() {
-
         // B면 출력
         printPage(0);
 
@@ -94,7 +97,6 @@ public class RubiksCube {
 
     public static void main(String[] args) {
         RubiksCube r = new RubiksCube();
-        r.getCube();
         r.printCube();
         r.moveF();
     }
