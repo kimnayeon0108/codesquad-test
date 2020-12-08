@@ -36,17 +36,36 @@ public class RubiksCube {
 
     private void printCube() {
         // B 면 출력
-        for (int j = 0; j < cube[0].length; j++) {
+        for (int i = 0; i < cube[0].length; i++) {
             System.out.print("         ");
-            for (int z = 0; z < cube[0][j].length; z++) {
-                System.out.print(cube[0][j][z] + " ");
+            for (int j = 0; j < cube[0][i].length; j++) {
+                System.out.print(cube[0][i][j] + " ");
             }
             System.out.println();
         }
         System.out.println();
 
         // W, O, G, Y 면 출력
+        for(int i = 0; i < cube[0].length; i++) {
+            for (int j = 1; j < cube.length - 1; j++) {
+                for (int z = 0; z < cube[j][i].length; z++) {
+                    System.out.print(cube[j][i][z] + " ");
+                }
+                System.out.print("   ");
+            }
+            System.out.println();
+        }
+        System.out.println();
 
+        // R 면 출력
+        for (int i = 0; i < cube[5].length; i++) {
+            System.out.print("         ");
+            for (int j = 0; j < cube[5][i].length; j++) {
+                System.out.print(cube[5][i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 
     public static void main(String[] args) {
