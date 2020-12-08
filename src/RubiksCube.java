@@ -37,7 +37,7 @@ public class RubiksCube {
     private void printCube() {
         // B 면 출력
         for (int i = 0; i < cube[0].length; i++) {
-            System.out.print("               ");
+            System.out.print("          ");
             for (int j = 0; j < cube[0][i].length; j++) {
                 System.out.print(cube[0][i][j] + " ");
             }
@@ -59,7 +59,7 @@ public class RubiksCube {
 
         // R 면 출력
         for (int i = 0; i < cube[5].length; i++) {
-            System.out.print("               ");
+            System.out.print("          ");
             for (int j = 0; j < cube[5][i].length; j++) {
                 System.out.print(cube[5][i][j] + " ");
             }
@@ -68,10 +68,33 @@ public class RubiksCube {
         System.out.println();
     }
 
+    private void moveF(){
+        char[] temp = new char[3];
+
+        for(int i = 0; i < temp.length; i++){
+
+            // 1면 값 temp 에 저장
+            temp[i] = cube[1][i][2];
+
+            // 5면 -> 1면으로
+            cube[1][i][2] = cube[5][0][i];
+
+            // 3면 -> 5면으로
+            cube[5][0][i] = cube[3][i][0];
+
+            // 0면 -> 3면으로
+            cube[3][i][0] = cube[0][2][i];
+
+            // temp 값 -> 0면으로
+            cube[0][2][i] = temp[i];
+        }
+        printCube();
+    }
+
     public static void main(String[] args) {
         RubiksCube r = new RubiksCube();
         r.getCube();
         r.printCube();
-
+        r.moveF();
     }
 }
