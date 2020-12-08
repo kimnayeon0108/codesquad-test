@@ -13,7 +13,6 @@ public class FlatCube {
     public FlatCube() {
         printCube();
         getInput();
-
     }
 
     private void printCube() {
@@ -29,23 +28,23 @@ public class FlatCube {
         System.out.print("\nCUBE> ");
         input = s.nextLine();
 
-
+        if (input.contains("\'")) {
+            direction = false;
+        }
+        if (!input.contains("\'")) {
+            direction = true;
+        }
+        if (input.equalsIgnoreCase("Q")) {
+            System.out.println("Bye Bye~");
+            return;
+        }
         for (int i = 0; i < input.length(); i++) {
             System.out.println();
-
-            if (input.charAt(i) == '\'') {
-                continue;
-            }
-            if (input.charAt(i + 1) != '\'') {  //Todo: i + 1 때문에 indexOutOfBounds 에러뜸
-                direction = true;
-            }
-            if (input.charAt(i + 1) == '\'') {
-                direction = false;
-            }
             a = input.charAt(i);
             System.out.println(a);
             move(a);
         }
+
     }
 
     private void move(char a) {
@@ -116,6 +115,7 @@ public class FlatCube {
         cube[0][idx] = temp;
 
     }
+
 
     public static void main(String[] args) {
         FlatCube fc = new FlatCube();
