@@ -6,6 +6,7 @@ public class Words {
     private int num;
     private boolean direction;
     private char[] wordArr;
+
     private Scanner s = new Scanner(System.in);
 
     public Words() {
