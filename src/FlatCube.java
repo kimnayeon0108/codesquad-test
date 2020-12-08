@@ -17,14 +17,14 @@ public class FlatCube {
     private void start() {
         while (true) {
             System.out.print("\nCUBE> ");
-            input = s.nextLine();
+            this.input = s.nextLine();
 
             if (input.equalsIgnoreCase("Q")) {
                 System.out.println("Bye Bye~");
                 return;
             }
 
-            getAlphaNum();
+            getAlphaNum(input);
             getAlphaArr();
 
             for(int i = 0; i <alphaArr.length; i++){
@@ -44,7 +44,7 @@ public class FlatCube {
         }
     }
 
-    private void getAlphaNum() {
+    private void getAlphaNum(String input) {
         int alphabet = 0;
 
         for (int i = 0; i < input.length(); i++) {
