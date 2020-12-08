@@ -28,50 +28,17 @@ public class FlatCube {
         System.out.print("\nCUBE> ");
         input = s.nextLine();
 
-        getAlphaNum();
-        alphaArr = new String[alphabet];
-
         if (input.equals("Q")) {
             System.out.println("Bye Bye~");
             return;
         }
+
+        getAlphaNum();
         getAlphaArr();
 
     }
 
-    private void getAlphaArr() {
-        int j = 0;
-
-        for (int i = 0; i < input.length(); i++) {
-
-            // 해당 글자가 ' 이면 continue
-            if(input.charAt(i) == '\''){
-                continue;
-            }
-
-            // input의 마지막 글자가 아니면, 다음글자에 /이 있는지 확인하기
-            if (i != input.length() - 1) {
-
-                if (input.charAt(i + 1) != '\'') {
-                    alphaArr[j] = input.substring(i, i + 1);
-                }
-                if (input.charAt(i + 1) == '\'') {
-                    alphaArr[j] = input.substring(i, i + 2);
-                }
-                j++;
-            }
-            // 마지막 글자 alphaArr 에 넣기, ' 일 경우는 없다, 위에서 continue로 필터링 해줘서
-            if(i == input.length()-1){
-                alphaArr[j] = String.valueOf(input.charAt(i));
-            }
-        }
-        for(String a : alphaArr){
-            System.out.println(a);
-        }
-    }
-
     private void getAlphaNum() {
-
         alphabet = 0;
 
         for (int i = 0; i < input.length(); i++) {
@@ -80,8 +47,40 @@ public class FlatCube {
                 alphabet++;
             }
         }
+        alphaArr = new String[alphabet];
     }
 
+    private String[] getAlphaArr() {
+        int j = 0;
+
+        for (int i = 0; i < input.length(); i++) {
+
+            // 해당 글자가 ' 이면 continue
+            if (input.charAt(i) == '\'') {
+                continue;
+            }
+
+            // input의 마지막 글자가 아니면, 다음글자에 /이 있는지 확인하기
+            if (i != input.length() - 1 && input.charAt(i + 1) != '\'') {
+                alphaArr[j] = input.substring(i, i + 1);
+                j++;
+            }
+            if (i != input.length() - 1 && input.charAt(i + 1) == '\'') {
+                alphaArr[j] = input.substring(i, i + 2);
+                j++;
+            }
+
+            // 마지막 글자 alphaArr 에 넣기, ' 일 경우는 없다, 위에서 continue로 필터링 해줘서
+            if (i == input.length() - 1) {
+                alphaArr[j] = String.valueOf(input.charAt(i));
+            }
+        }
+        for(String a : alphaArr){
+            System.out.println(a);
+        }
+
+        return alphaArr;
+    }
 
     private void move(String a) {
 
