@@ -43,7 +43,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
-  <component name="RunManager" selected="Application.FlatCube">
+  <component name="RunManager" selected="Application.RubiksCube">
     <configuration name="FlatCube" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="FlatCube" />
       <module name="codesquad-test" />
@@ -61,6 +61,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RubiksCube" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="RubiksCube" />
+      <module name="codesquad-test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Words" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Words" />
       <module name="codesquad-test" />
@@ -72,9 +79,11 @@
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Words" />
       <item itemvalue="Application.FlatCube" />
+      <item itemvalue="Application.RubiksCube" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RubiksCube" />
         <item itemvalue="Application.FlatCube" />
         <item itemvalue="Application.Words" />
         <item itemvalue="Application.Main" />
@@ -104,25 +113,45 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state width="947" height="213" key="GridCell.Tab.0.bottom" timestamp="1607330444214">
+    <state width="624" height="213" key="GridCell.Tab.0.bottom" timestamp="1607427171183">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
-    <state width="947" height="213" key="GridCell.Tab.0.bottom/0.23.1440.824@0.23.1440.824" timestamp="1607330444214" />
-    <state width="947" height="213" key="GridCell.Tab.0.center" timestamp="1607330444213">
+    <state width="624" height="213" key="GridCell.Tab.0.bottom/0.23.1440.824@0.23.1440.824" timestamp="1607427171183" />
+    <state width="624" height="213" key="GridCell.Tab.0.center" timestamp="1607427171182">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
-    <state width="947" height="213" key="GridCell.Tab.0.center/0.23.1440.824@0.23.1440.824" timestamp="1607330444213" />
-    <state width="947" height="213" key="GridCell.Tab.0.left" timestamp="1607330444213">
+    <state width="624" height="213" key="GridCell.Tab.0.center/0.23.1440.824@0.23.1440.824" timestamp="1607427171182" />
+    <state width="624" height="213" key="GridCell.Tab.0.left" timestamp="1607427171182">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
-    <state width="947" height="213" key="GridCell.Tab.0.left/0.23.1440.824@0.23.1440.824" timestamp="1607330444213" />
-    <state width="947" height="213" key="GridCell.Tab.0.right" timestamp="1607330444214">
+    <state width="624" height="213" key="GridCell.Tab.0.left/0.23.1440.824@0.23.1440.824" timestamp="1607427171182" />
+    <state width="624" height="213" key="GridCell.Tab.0.right" timestamp="1607427171183">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
-    <state width="947" height="213" key="GridCell.Tab.0.right/0.23.1440.824@0.23.1440.824" timestamp="1607330444214" />
-    <state x="735" y="171" width="670" height="676" key="search.everywhere.popup" timestamp="1607320610698">
+    <state width="624" height="213" key="GridCell.Tab.0.right/0.23.1440.824@0.23.1440.824" timestamp="1607427171183" />
+    <state width="794" height="264" key="GridCell.Tab.1.bottom" timestamp="1607408307463">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
-    <state x="735" y="171" width="670" height="676" key="search.everywhere.popup/0.23.1440.824@0.23.1440.824" timestamp="1607320610698" />
+    <state width="794" height="264" key="GridCell.Tab.1.bottom/0.23.1440.824@0.23.1440.824" timestamp="1607408307463" />
+    <state width="794" height="264" key="GridCell.Tab.1.center" timestamp="1607408307462">
+      <screen x="0" y="23" width="1440" height="824" />
+    </state>
+    <state width="794" height="264" key="GridCell.Tab.1.center/0.23.1440.824@0.23.1440.824" timestamp="1607408307462" />
+    <state width="794" height="264" key="GridCell.Tab.1.left" timestamp="1607408307462">
+      <screen x="0" y="23" width="1440" height="824" />
+    </state>
+    <state width="794" height="264" key="GridCell.Tab.1.left/0.23.1440.824@0.23.1440.824" timestamp="1607408307462" />
+    <state width="794" height="264" key="GridCell.Tab.1.right" timestamp="1607408307463">
+      <screen x="0" y="23" width="1440" height="824" />
+    </state>
+    <state width="794" height="264" key="GridCell.Tab.1.right/0.23.1440.824@0.23.1440.824" timestamp="1607408307463" />
+    <state x="222" y="143" width="860" height="624" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1607399208686">
+      <screen x="0" y="23" width="1440" height="824" />
+    </state>
+    <state x="222" y="143" width="860" height="624" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.824@0.23.1440.824" timestamp="1607399208686" />
+    <state x="735" y="171" width="670" height="676" key="search.everywhere.popup" timestamp="1607342439157">
+      <screen x="0" y="23" width="1440" height="824" />
+    </state>
+    <state x="735" y="171" width="670" height="676" key="search.everywhere.popup/0.23.1440.824@0.23.1440.824" timestamp="1607342439157" />
   </component>
 </project>
