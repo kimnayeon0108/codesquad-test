@@ -40,7 +40,7 @@ public class FlatCube {
             System.out.println();
         }
     }
-    
+
     private void getAlphaNum() {
         alphabet = 0;
 
@@ -145,9 +145,7 @@ public class FlatCube {
             cube[i][idx] = cube[i - 1][idx];
         }
         cube[0][idx] = temp;
-
     }
-
 
     public static void main(String[] args) {
         FlatCube fc = new FlatCube();
