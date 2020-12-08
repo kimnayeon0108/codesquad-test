@@ -5,7 +5,6 @@ public class FlatCube {
             {'G', 'C', 'W'},
             {'G', 'B', 'B'}};
     private String input;
-    private int alphabet;
     private String[] alphaArr;
 
     private final Scanner s = new Scanner(System.in);
@@ -42,7 +41,7 @@ public class FlatCube {
     }
 
     private void getAlphaNum() {
-        alphabet = 0;
+        int alphabet = 0;
 
         for (int i = 0; i < input.length(); i++) {
             if (input.charAt(i) == 'U' || input.charAt(i) == 'L'
