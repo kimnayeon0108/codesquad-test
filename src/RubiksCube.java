@@ -95,6 +95,8 @@ public class RubiksCube {
         printCube();
     }
 
+
+
     public static void main(String[] args) {
         RubiksCube r = new RubiksCube();
         r.printCube();
