@@ -11,6 +11,10 @@ public class FlatCube {
 
     public FlatCube() {
         printCube();
+        start();
+    }
+
+    private void start() {
         while (true) {
             System.out.print("\nCUBE> ");
             input = s.nextLine();
