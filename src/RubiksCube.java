@@ -14,13 +14,25 @@ public class RubiksCube {
 
     private void start() {
         while (true) {
-            System.out.print("\nCUBE> ");
+            System.out.print("\nCUBE (종료하려면 \'Q\'를 입력하세요.> ");
             this.input = s.nextLine();
+
+            if (input.equalsIgnoreCase("Q")){
+                System.out.println("프로그램이 종료되었습니다.");
+                return;
+            }
 
             getArrSize(this.input);
             getAlphaArr(this.input);
+
+
+            for (int i = 0; i < alphaArr.length; i++) {
+                System.out.println();
+            }
         }
     }
+
+
 
     private String[] getAlphaArr(String input) {
         int j = 0;
