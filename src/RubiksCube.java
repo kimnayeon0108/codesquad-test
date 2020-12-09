@@ -15,10 +15,10 @@ public class RubiksCube {
     private void start() {
         while (true) {
             System.out.print("\nCUBE> ");
-            input = s.nextLine();
+            this.input = s.nextLine();
 
-            getArrSize(input);
-            getAlphaArr(input);
+            getArrSize(this.input);
+            getAlphaArr(this.input);
         }
     }
 
@@ -29,7 +29,7 @@ public class RubiksCube {
             if (input.charAt(i) == '\'') {
                 continue;
             }
-            // input의 마지막 글자가 아니고, 다음 글자에 " ' " 유무 여부에 따라 alphaArr에 값 넣기 
+            // input의 마지막 글자가 아니고, 다음 글자에 " ' " 유무 여부에 따라 alphaArr에 값 넣기
             if (i != input.length() - 1 && input.charAt(i + 1) != '\'') {
                 alphaArr[j] = input.substring(i, i + 1);
                 j++;
