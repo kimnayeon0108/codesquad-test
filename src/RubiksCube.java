@@ -73,7 +73,7 @@ public class RubiksCube {
         System.out.println();
     }
 
-    private void moveF() {
+    private void moveFtoL() {
         char[] temp = new char[3];
 
         for (int i = 0; i < temp.length; i++) {
@@ -95,11 +95,29 @@ public class RubiksCube {
         printCube();
     }
 
+    private void moveFtoR(){
+        char[] temp = new char[3];
+
+        for(int i =0; i < temp.length; i++){
+            // 1면 값 temp 에 저장
+            temp[i] = cube[1][i][2];
+            // 0면 -> 1면으로
+            cube[1][i][2] = cube[0][2][i];
+            // 3면 -> 0면으로
+            cube[0][2][i] = cube[3][i][0];
+            // 5면 -> 3면으로
+            cube[3][i][0] = cube[5][0][i];
+            // temp 값 -> 5면으로
+            cube[5][0][i] = temp[i];
+        }
+        printCube();
+    }
+
 
 
     public static void main(String[] args) {
         RubiksCube r = new RubiksCube();
         r.printCube();
-        r.moveF();
+        r.moveFtoR();
     }
 }
