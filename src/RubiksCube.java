@@ -1,8 +1,44 @@
+import java.util.Scanner;
+
 public class RubiksCube {
     private char[][][] cube = new char[6][3][3];
+    private String input;
+    private String[] alphaArr;
+    private Scanner s = new Scanner(System.in);
 
     private RubiksCube() {
         getCube();
+        printCube();
+        start();
+    }
+
+    private void start() {
+        while (true) {
+            System.out.print("\nCUBE> ");
+            input = s.nextLine();
+
+            getAlphaArr();
+        }
+    }
+
+    private void getAlphaArr() {
+        getArrSize();
+
+
+
+    }
+
+    private void getArrSize() {
+        int alphabet = 0;
+
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == 'F' || input.charAt(i) == 'R'
+                    || input.charAt(i) == 'U' || input.charAt(i) == 'B'
+                    || input.charAt(i) == 'L' || input.charAt(i) == 'D'){
+                alphabet++;
+            }
+        }
+        alphaArr = new String[alphabet];
     }
 
     private void getCube() {
@@ -268,7 +304,7 @@ public class RubiksCube {
 
     private void moveDtoL() {
         char[] temp = new char[3];
-        for(int i = 0; i < temp.length; i++){
+        for (int i = 0; i < temp.length; i++) {
             // 1면의 2행 → temp
             temp[i] = cube[1][2][i];
             // 2면의 2행 → 1면의 2행
