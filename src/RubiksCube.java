@@ -95,10 +95,10 @@ public class RubiksCube {
         printCube();
     }
 
-    private void moveFtoR(){
+    private void moveFtoR() {
         char[] temp = new char[3];
 
-        for(int i =0; i < temp.length; i++){
+        for (int i = 0; i < temp.length; i++) {
             // 1면 값 temp 에 저장
             temp[i] = cube[1][i][2];
             // 0면 -> 1면으로
@@ -113,9 +113,9 @@ public class RubiksCube {
         printCube();
     }
 
-    private void moveRtoL(){
+    private void moveRtoL() {
         char[] temp = new char[3];
-        for(int i = 0; i < temp.length; i++){
+        for (int i = 0; i < temp.length; i++) {
             // 2면의 2열 temp 에 담기
             temp[i] = cube[2][i][2];
             // 5면의 2열 -> 2면의 2열로
@@ -130,9 +130,26 @@ public class RubiksCube {
         printCube();
     }
 
+    private void moveRtoR() {
+        char[] temp = new char[3];
+        for (int i = 0; i < temp.length; i++) {
+            // 2면의 2열 temp 값으로
+            temp[i] = cube[2][i][2];
+            // 0면의 2열 -> 2면의 2열로
+            cube[2][i][2] = cube[0][i][2];
+            // 4면의 0열 -> 0면의 2열로
+            cube[0][i][2] = cube[4][i][0];
+            // 5면의 2열 -> 4면의 0열로
+            cube[4][i][0] = cube[5][i][2];
+            // temp -> 5면의 2열로
+            cube[5][i][2] = temp[i];
+        }
+        printCube();
+    }
+
     public static void main(String[] args) {
         RubiksCube r = new RubiksCube();
         r.printCube();
-        r.moveRtoL();
+        r.moveRtoR();
     }
 }
