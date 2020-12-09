@@ -215,8 +215,25 @@ public class RubiksCube {
         printCube();
     }
 
+    private void moveLtoR(){
+        char[] temp = new char[3];
+        for(int i = 0; i < temp.length; i++){
+            // 2면의 0열 -> temp
+            temp[i] = cube[2][i][0];
+            // 0면의 0열 → 2면의 0열로
+            cube[2][i][0] = cube[0][i][0];
+            // 4면의 2열 → 0면의 0열로
+            cube[0][i][0] = cube[4][i][2];
+            // 5면의 0열 → 4면의 2열로
+            cube[4][i][2] = cube[5][i][0];
+            // temp → 5면의 0열
+            cube[5][i][0] = temp[i];
+        }
+        printCube();
+    }
+
     public static void main(String[] args) {
         RubiksCube r = new RubiksCube();
-        r.moveBtoL();
+        r.moveLtoR();
     }
 }
