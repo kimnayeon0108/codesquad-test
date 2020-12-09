@@ -17,24 +17,42 @@ public class RubiksCube {
             System.out.print("\nCUBE> ");
             input = s.nextLine();
 
-            getAlphaArr();
+            getArrSize(input);
+            getAlphaArr(input);
         }
     }
 
-    private void getAlphaArr() {
-        getArrSize();
+    private String[] getAlphaArr(String input) {
+        int j = 0;
 
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == '\'') {
+                continue;
+            }
+            // input의 마지막 글자가 아니고, 다음 글자에 " ' " 유무 여부에 따라 alphaArr에 값 넣기 
+            if (i != input.length() - 1 && input.charAt(i + 1) != '\'') {
+                alphaArr[j] = input.substring(i, i + 1);
+                j++;
+            }
+            if (i != input.length() - 1 && input.charAt(i + 1) == '\'') {
+                alphaArr[j] = input.substring(i, i + 2);
+                j++;
+            }
 
-
+            if (i == input.length() - 1) {
+                alphaArr[j] = String.valueOf(input.charAt(i));
+            }
+        }
+        return alphaArr;
     }
 
-    private void getArrSize() {
+    private void getArrSize(String input) {
         int alphabet = 0;
 
         for (int i = 0; i < input.length(); i++) {
             if (input.charAt(i) == 'F' || input.charAt(i) == 'R'
                     || input.charAt(i) == 'U' || input.charAt(i) == 'B'
-                    || input.charAt(i) == 'L' || input.charAt(i) == 'D'){
+                    || input.charAt(i) == 'L' || input.charAt(i) == 'D') {
                 alphabet++;
             }
         }
