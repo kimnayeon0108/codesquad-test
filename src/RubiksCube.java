@@ -17,7 +17,7 @@ public class RubiksCube {
             System.out.print("\nCUBE (종료하려면 \'Q\'를 입력하세요.> ");
             this.input = s.nextLine();
 
-            if (input.equalsIgnoreCase("Q")){
+            if (input.equalsIgnoreCase("Q")) {
                 System.out.println("프로그램이 종료되었습니다.");
                 return;
             }
@@ -35,6 +35,45 @@ public class RubiksCube {
     }
 
     private void move(String s) {
+        switch (s) {
+            case "F":
+                moveFtoL();
+                break;
+            case "F'":
+                moveFtoR();
+                break;
+            case "R":
+                moveRtoL();
+                break;
+            case "R'":
+                moveRtoR();
+                break;
+            case "U":
+                moveUtoL();
+                break;
+            case "U'":
+                moveUtoR();
+                break;
+            case "B":
+                moveBtoR();
+                break;
+            case "B'":
+                moveBtoL();
+                break;
+            case "L":
+                moveLtoR();
+                break;
+            case "L'":
+                moveLtoL();
+                break;
+            case "D":
+                moveDtoR();
+                break;
+            case "D'":
+                moveDtoL();
+                break;
+        }
+        printCube();
     }
 
 
