@@ -113,11 +113,26 @@ public class RubiksCube {
         printCube();
     }
 
-
+    private void moveRtoL(){
+        char[] temp = new char[3];
+        for(int i = 0; i < temp.length; i++){
+            // 2면의 2열 temp 에 담기
+            temp[i] = cube[2][i][2];
+            // 5면의 2열 -> 2면의 2열로
+            cube[2][i][2] = cube[5][i][2];
+            // 4면의 0열 -> 5면의 2열로
+            cube[5][i][2] = cube[4][i][0];
+            // 0면의 2열 -> 4면의 0열로
+            cube[4][i][0] = cube[0][i][2];
+            // temp 값 -> 0면의 2열로
+            cube[0][i][2] = temp[i];
+        }
+        printCube();
+    }
 
     public static void main(String[] args) {
         RubiksCube r = new RubiksCube();
         r.printCube();
-        r.moveFtoR();
+        r.moveRtoL();
     }
 }
