@@ -183,7 +183,7 @@ public class RubiksCube {
 
     private void moveBtoR() {
         char[] temp = new char[3];
-        for (int i = 0; i < temp.length; i++){
+        for (int i = 0; i < temp.length; i++) {
             // 1면의 0열 -> temp
             temp[i] = cube[1][i][0];
             // 0면의 0행 -> 1면의 0열
@@ -198,9 +198,9 @@ public class RubiksCube {
         printCube();
     }
 
-    private void moveBtoL(){
+    private void moveBtoL() {
         char[] temp = new char[3];
-        for(int i = 0; i < temp.length; i++){
+        for (int i = 0; i < temp.length; i++) {
             // 1면의 0열 -> temp
             temp[i] = cube[1][i][0];
             // 5면의 2행 -> 1면의 0열
@@ -215,9 +215,9 @@ public class RubiksCube {
         printCube();
     }
 
-    private void moveLtoR(){
+    private void moveLtoR() {
         char[] temp = new char[3];
-        for(int i = 0; i < temp.length; i++){
+        for (int i = 0; i < temp.length; i++) {
             // 2면의 0열 -> temp
             temp[i] = cube[2][i][0];
             // 0면의 0열 → 2면의 0열로
@@ -232,8 +232,25 @@ public class RubiksCube {
         printCube();
     }
 
+    private void moveLtoL() {
+        char[] temp = new char[3];
+        for(int i = 0; i < temp.length; i++){
+            // 2면의 0열 → temp
+            temp[i] = cube[2][i][0];
+            // 5면의 0열 → 2면의 0열
+            cube[2][i][0] = cube[5][i][0];
+            // 4면의 2열 → 5면의 0열
+            cube[5][i][0] = cube[4][i][2];
+            // 0면의 0열 → 4면의 2열
+            cube[4][i][2] = cube[0][i][0];
+            // temp → 0면의 0열
+            cube[0][i][0] = temp[i];
+        }
+        printCube();
+    }
+
     public static void main(String[] args) {
         RubiksCube r = new RubiksCube();
-        r.moveLtoR();
+        r.moveLtoL();
     }
 }
