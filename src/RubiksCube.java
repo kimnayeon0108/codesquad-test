@@ -28,10 +28,14 @@ public class RubiksCube {
 
             for (int i = 0; i < alphaArr.length; i++) {
                 System.out.println();
+                System.out.println(alphaArr[i]);
+                move(alphaArr[i]);
             }
         }
     }
 
+    private void move(String s) {
+    }
 
 
     private String[] getAlphaArr(String input) {
