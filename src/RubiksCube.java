@@ -13,12 +13,14 @@ public class RubiksCube {
     }
 
     private void start() {
+        int num = 0;
         while (true) {
             System.out.print("\nCUBE> ");
             this.input = s.nextLine();
 
             if (input.equalsIgnoreCase("Q")) {
-                System.out.println("프로그램이 종료되었습니다.");
+                System.out.println("조작개수: " + num);
+                System.out.println("이용해주셔서 감사합니다.");
                 return;
             }
 
@@ -28,13 +30,14 @@ public class RubiksCube {
             for (int i = 0; i < alphaArr.length; i++) {
                 System.out.println();
                 System.out.println(alphaArr[i]);
-                // Todo: 이부분 고치기
                 if (alphaArr[i].contains("2")) {
                     move(alphaArr[i].substring(0,1));
                     move(alphaArr[i].substring(0,1));
                 } else {
                     move(alphaArr[i]);
                 }
+                printCube();
+                num++;
             }
         }
     }
