@@ -4,6 +4,7 @@ public class RubiksCube {
     private char[][][] cube = new char[6][3][3];
     private String input;
     private String[] alphaArr;
+    private boolean end = false;
     private Scanner s = new Scanner(System.in);
 
     private RubiksCube() {
@@ -37,17 +38,47 @@ public class RubiksCube {
         }
     }
 
+    private void printCube() {
+        // B면 출력
+        printPage(0);
+
+        // W, O, G, Y 면 출력
+        for (int i = 0; i < cube[0].length; i++) {
+            printFourP(i);
+        }
+        System.out.println();
+
+        // R면 출력
+        printPage(5);
+    }
+
+    private void printPage(int a) {
+        for (int i = 0; i < cube[a].length; i++) {
+            System.out.print("          ");
+            for (int j = 0; j < cube[a][i].length; j++) {
+                System.out.print(cube[a][i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    private void printFourP(int i) {
+        for (int j = 1; j < cube.length - 1; j++) {
+            for (int z = 0; z < cube[j][i].length; z++) {
+                System.out.print(cube[j][i][z] + " ");
+            }
+            System.out.print("    ");
+        }
+        System.out.println();
+    }
+
     private void start() {
         int num = 0;
-        while (true) {
-            System.out.print("\nCUBE> ");
-            this.input = s.nextLine();
 
-            if (input.equalsIgnoreCase("Q")) {
-                System.out.println("조작개수: " + num);
-                System.out.println("이용해주셔서 감사합니다.");
-                return;
-            }
+        while (true) {
+            getInput(num);
+            if (end) return;
 
             getArrSize(this.input);
             getAlphaArr(this.input);
@@ -64,6 +95,17 @@ public class RubiksCube {
                 printCube();
                 num++;
             }
+        }
+    }
+
+    private void getInput(int num) {
+        System.out.print("\nCUBE> ");
+        this.input = s.nextLine();
+
+        if (input.equalsIgnoreCase("Q")) {
+            System.out.println("조작개수: " + num);
+            System.out.println("이용해주셔서 감사합니다.");
+            end = true;
         }
     }
 
@@ -164,41 +206,6 @@ public class RubiksCube {
                 cube[z][i][j] = a;
             }
         }
-    }
-
-    private void printCube() {
-        // B면 출력
-        printPage(0);
-
-        // W, O, G, Y 면 출력
-        for (int i = 0; i < cube[0].length; i++) {
-            printFourP(i);
-        }
-        System.out.println();
-
-        // R면 출력
-        printPage(5);
-    }
-
-    private void printPage(int a) {
-        for (int i = 0; i < cube[a].length; i++) {
-            System.out.print("          ");
-            for (int j = 0; j < cube[a][i].length; j++) {
-                System.out.print(cube[a][i][j] + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
-    }
-
-    private void printFourP(int i) {
-        for (int j = 1; j < cube.length - 1; j++) {
-            for (int z = 0; z < cube[j][i].length; z++) {
-                System.out.print(cube[j][i][z] + " ");
-            }
-            System.out.print("    ");
-        }
-        System.out.println();
     }
 
     private void moveFtoL() {
