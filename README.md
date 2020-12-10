@@ -97,8 +97,7 @@ CUBE> Q
                     R R R 
     ```
 
-    ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c6f24e77-e05e-4087-8125-a206cbd8fa56/_2020-12-10__8.49.39.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c6f24e77-e05e-4087-8125-a206cbd8fa56/_2020-12-10__8.49.39.png)
-
+  <img width="650" alt="스크린샷 2020-12-10 오후 8 49 39" src="https://user-images.githubusercontent.com/65011131/101780178-8aa25080-3b39-11eb-8b4f-3dfa9436e5bf.png">
     출처: [https://rubiks-cube-solver.com/ko/](https://rubiks-cube-solver.com/ko/)
 
 ## 함수의 역할 및 동작 설명
