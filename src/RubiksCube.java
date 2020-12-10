@@ -220,7 +220,6 @@ public class RubiksCube {
         for (int i = 0; i < temp.length; i++) {
             cube[0][2][2 - i] = temp[i];
         }
-        printCube();
     }
 
     private void moveFtoR() {
@@ -245,7 +244,6 @@ public class RubiksCube {
         for (int i = 0; i < temp.length; i++) {
             cube[5][0][i] = temp[i];
         }
-        printCube();
     }
 
     private void moveRtoL() {
@@ -270,7 +268,6 @@ public class RubiksCube {
         for (int i = 0; i < temp.length; i++) {
             cube[0][i][2] = temp[i];
         }
-        printCube();
     }
 
     private void moveRtoR() {
@@ -295,7 +292,6 @@ public class RubiksCube {
         for (int i = 0; i < temp.length; i++) {
             cube[5][i][2] = temp[i];
         }
-        printCube();
     }
 
     private void moveUtoL() {
@@ -320,7 +316,6 @@ public class RubiksCube {
         for (int i = 0; i < temp.length; i++) {
             cube[4][0][i] = temp[i];
         }
-        printCube();
     }
 
     private void moveUtoR() {
@@ -345,7 +340,6 @@ public class RubiksCube {
         for (int i = 0; i < temp.length; i++) {
             cube[2][0][i] = temp[i];
         }
-        printCube();
     }
 
     private void moveBtoR() {
@@ -370,7 +364,6 @@ public class RubiksCube {
         for (int i = 0; i < temp.length; i++) {
             cube[5][2][i] = temp[i];
         }
-        printCube();
     }
 
     private void moveBtoL() {
@@ -395,7 +388,6 @@ public class RubiksCube {
         for (int i = 0; i < temp.length; i++) {
             cube[0][0][2 - i] = temp[i];
         }
-        printCube();
     }
 
     private void moveLtoR() {
@@ -420,7 +412,6 @@ public class RubiksCube {
         for (int i = 0; i < temp.length; i++) {
             cube[5][i][0] = temp[i];
         }
-        printCube();
     }
 
     private void moveLtoL() {
@@ -445,7 +436,6 @@ public class RubiksCube {
         for (int i = 0; i < temp.length; i++) {
             cube[0][i][0] = temp[i];
         }
-        printCube();
     }
 
     private void moveDtoR() {
@@ -470,7 +460,6 @@ public class RubiksCube {
         for (int i = 0; i < temp.length; i++) {
             cube[2][2][i] = temp[i];
         }
-        printCube();
     }
 
     private void moveDtoL() {
@@ -495,7 +484,6 @@ public class RubiksCube {
         for (int i = 0; i < temp.length; i++) {
             cube[4][2][i] = temp[i];
         }
-        printCube();
     }
 
     private void turnClock(int page) {
