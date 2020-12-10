@@ -219,15 +219,23 @@ public class RubiksCube {
 
     private void moveFtoR() {
         char[] temp = new char[3];
+        // 1면 값 temp 에 저장
         for (int i = 0; i < temp.length; i++) {
-            // 1면 값 temp 에 저장
             temp[i] = cube[1][i][2];
-            // 0면 -> 1면으로
-            cube[1][i][2] = cube[0][2][i];
-            // 3면 -> 0면으로
+        }
+        // 0면 -> 1면으로
+        for (int i = 0; i < temp.length; i++) {
+            cube[1][2 - i][2] = cube[0][2][i];
+        }
+        // 3면 -> 0면으로
+        for (int i = 0; i < temp.length; i++) {
             cube[0][2][i] = cube[3][i][0];
-            // 5면 -> 3면으로
-            cube[3][i][0] = cube[5][0][i];
+        }
+        // 5면 -> 3면으로
+        for (int i = 0; i < temp.length; i++) {
+            cube[3][i][0] = cube[5][0][2 - i];
+        }
+        for (int i = 0; i < temp.length; i++) {
             // temp 값 -> 5면으로
             cube[5][0][i] = temp[i];
         }
@@ -435,7 +443,7 @@ public class RubiksCube {
         }
     }
 
-    private void turnAntiClock(int page){
+    private void turnAntiClock(int page) {
         char[] temp1 = new char[3];
         char[] temp2 = new char[3];
         char[] temp3 = new char[3];
