@@ -65,7 +65,7 @@ CUBE> Q
 - 2단계보다 2개의 위치(F면과 D면)가 추가로 생겼다. (2단계의 B와 별개로 3단계에서 B는 아래가 아닌 Back 으로 간주)
 - 2차열 배열을 6개 만들까, 큐브의 각각 면 마다 클래스를 만들어야 하나 고민하다가 전체 큐브 면을 출력하기에 3차열 배열이 제일 알맞을 것 같다고 판단하였다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c3624954-fb20-45c3-850d-6cdbb10aab9a/_2020-12-10__8.24.50.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c3624954-fb20-45c3-850d-6cdbb10aab9a/_2020-12-10__8.24.50.png)
+<img width="291" alt="스크린샷 2020-12-10 오후 8 24 50" src="https://user-images.githubusercontent.com/65011131/101779960-42832e00-3b39-11eb-8628-e055704c4f20.png">
 
 출처: [https://rubiks-cube-solver.com/ko/](https://rubiks-cube-solver.com/ko/)
 
