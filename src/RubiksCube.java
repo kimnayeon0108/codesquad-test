@@ -9,7 +9,11 @@ public class RubiksCube {
     private RubiksCube() {
         getCube();
         printCube();
-        start();
+//        start();
+        turnClock(3);
+        moveRtoL();
+        turnAntiClock(2);
+        moveFtoR();
     }
 
     private void start() {
@@ -40,7 +44,7 @@ public class RubiksCube {
                 turnClock(2);
                 moveFtoL();
                 break;
-            case "F'":
+            case "F\'":
                 turnAntiClock(2);
                 moveFtoR();
                 break;
@@ -235,8 +239,8 @@ public class RubiksCube {
         for (int i = 0; i < temp.length; i++) {
             cube[3][i][0] = cube[5][0][2 - i];
         }
+        // temp 값 -> 5면으로
         for (int i = 0; i < temp.length; i++) {
-            // temp 값 -> 5면으로
             cube[5][0][i] = temp[i];
         }
         printCube();
@@ -269,16 +273,24 @@ public class RubiksCube {
 
     private void moveRtoR() {
         char[] temp = new char[3];
+        // 2면의 2열 temp 값으로
         for (int i = 0; i < temp.length; i++) {
-            // 2면의 2열 temp 값으로
             temp[i] = cube[2][i][2];
-            // 0면의 2열 -> 2면의 2열로
+        }
+        // 0면의 2열 -> 2면의 2열로
+        for (int i = 0; i < temp.length; i++) {
             cube[2][i][2] = cube[0][i][2];
-            // 4면의 0열 -> 0면의 2열로
-            cube[0][i][2] = cube[4][i][0];
-            // 5면의 2열 -> 4면의 0열로
-            cube[4][i][0] = cube[5][i][2];
-            // temp -> 5면의 2열로
+        }
+        // 4면의 0열 -> 0면의 2열로
+        for (int i = 0; i < temp.length; i++) {
+            cube[0][2-i][2] = cube[4][i][0];
+        }
+        // 5면의 2열 -> 4면의 0열로
+        for (int i = 0; i < temp.length; i++) {
+            cube[4][i][0] = cube[5][2-i][2];
+        }
+        // temp -> 5면의 2열로
+        for (int i = 0; i < temp.length; i++) {
             cube[5][i][2] = temp[i];
         }
         printCube();
@@ -458,11 +470,11 @@ public class RubiksCube {
         }
         for (int i = 0; i < cube[page].length; i++) {
             // temp1 -> 0열
-            cube[page][i][0] = temp1[i];
+            cube[page][2-i][0] = temp1[i];
             // temp2 -> 1열
-            cube[page][i][1] = temp2[i];
+            cube[page][2-i][1] = temp2[i];
             // temp3 -> 2열
-            cube[page][i][2] = temp3[i];
+            cube[page][2-i][2] = temp3[i];
         }
     }
 
