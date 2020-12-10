@@ -280,11 +280,11 @@ public class RubiksCube {
         }
         // 4면의 0열 -> 0면의 2열로
         for (int i = 0; i < temp.length; i++) {
-            cube[0][2-i][2] = cube[4][i][0];
+            cube[0][2 - i][2] = cube[4][i][0];
         }
         // 5면의 2열 -> 4면의 0열로
         for (int i = 0; i < temp.length; i++) {
-            cube[4][i][0] = cube[5][2-i][2];
+            cube[4][i][0] = cube[5][2 - i][2];
         }
         // temp -> 5면의 2열로
         for (int i = 0; i < temp.length; i++) {
@@ -345,16 +345,24 @@ public class RubiksCube {
 
     private void moveBtoR() {
         char[] temp = new char[3];
+        // 1면의 0열 -> temp
         for (int i = 0; i < temp.length; i++) {
-            // 1면의 0열 -> temp
             temp[i] = cube[1][i][0];
-            // 0면의 0행 -> 1면의 0열
-            cube[1][i][0] = cube[0][0][i];
-            // 3면의 2열 -> 0면의 0행
+        }
+        // 0면의 0행 -> 1면의 0열
+        for (int i = 0; i < temp.length; i++) {
+            cube[1][2 - i][0] = cube[0][0][i];
+        }
+        // 3면의 2열 -> 0면의 0행
+        for (int i = 0; i < temp.length; i++) {
             cube[0][0][i] = cube[3][i][2];
-            // 5면의 2행 -> 3면의 2열
-            cube[3][i][2] = cube[5][2][i];
-            // temp -> 5면의 2행
+        }
+        // 5면의 2행 -> 3면의 2열
+        for (int i = 0; i < temp.length; i++) {
+            cube[3][i][2] = cube[5][2][2 - i];
+        }
+        // temp -> 5면의 2행
+        for (int i = 0; i < temp.length; i++) {
             cube[5][2][i] = temp[i];
         }
         printCube();
@@ -483,11 +491,11 @@ public class RubiksCube {
         }
         for (int i = 0; i < cube[page].length; i++) {
             // temp1 -> 0열
-            cube[page][2-i][0] = temp1[i];
+            cube[page][2 - i][0] = temp1[i];
             // temp2 -> 1열
-            cube[page][2-i][1] = temp2[i];
+            cube[page][2 - i][1] = temp2[i];
             // temp3 -> 2열
-            cube[page][2-i][2] = temp3[i];
+            cube[page][2 - i][2] = temp3[i];
         }
     }
 
