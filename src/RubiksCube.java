@@ -370,17 +370,25 @@ public class RubiksCube {
 
     private void moveBtoL() {
         char[] temp = new char[3];
+        // 1면의 0열 -> temp
         for (int i = 0; i < temp.length; i++) {
-            // 1면의 0열 -> temp
             temp[i] = cube[1][i][0];
-            // 5면의 2행 -> 1면의 0열
+        }
+        // 5면의 2행 -> 1면의 0열
+        for (int i = 0; i < temp.length; i++) {
             cube[1][i][0] = cube[5][2][i];
-            // 3면의 2열 -> 5면의 2행
-            cube[5][2][i] = cube[3][i][2];
-            // 0면의 0행 -> 3면의 2열
+        }
+        // 3면의 2열 -> 5면의 2행
+        for (int i = 0; i < temp.length; i++) {
+            cube[5][2][2 - i] = cube[3][i][2];
+        }
+        // 0면의 0행 -> 3면의 2열
+        for (int i = 0; i < temp.length; i++) {
             cube[3][i][2] = cube[0][0][i];
-            // temp -> 0면의 0행
-            cube[0][0][i] = temp[i];
+        }
+        // temp -> 0면의 0행
+        for (int i = 0; i < temp.length; i++) {
+            cube[0][0][2 - i] = temp[i];
         }
         printCube();
     }
