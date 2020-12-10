@@ -405,16 +405,32 @@ public class RubiksCube {
     }
 
     private void turnClock(int page) {
-        char[] temp = new char[3];
+        char[] temp1 = new char[3];
+        char[] temp2 = new char[3];
+        char[] temp3 = new char[3];
+        // 0행 -> temp1
         for (int i = 0; i < cube[page].length; i++) {
-            // 0행 -> temp
-            temp[i] = cube[page][0][i];
-            // 2행 -> 0열
-            cube[page][i][0] = cube[page][2][i];
-            // 1행 -> 1열
-            cube[page][i][1] = cube[page][1][i];
-            // temp -> 2열
-            cube[page][i][2] = temp[i];
+            temp1[i] = cube[page][0][i];
+        }
+        // 1행 -> temp2
+        for(int i =0; i < cube[page].length; i++){
+            temp2[i] = cube[page][1][i];
+        }
+        // 2행 -> temp3
+        for(int i =0; i < cube[page].length; i++){
+            temp3[i] = cube[page][2][i];
+        }
+        // temp1 -> 2열
+        for (int i = 0; i < cube[page].length; i++) {
+            cube[page][i][2] = temp1[i];
+        }
+        // temp2 -> 1열
+        for (int i = 0; i < cube[page].length; i++) {
+            cube[page][i][1] = temp2[i];
+        }
+        // temp3 -> 0열
+        for (int i = 0; i < cube[page].length; i++) {
+            cube[page][i][0] = temp3[i];
         }
     }
 
