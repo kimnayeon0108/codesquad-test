@@ -82,19 +82,7 @@ public class RubiksCube {
 
             getArrSize(this.input);
             getAlphaArr(this.input);
-
-            for (int i = 0; i < alphaArr.length; i++) {
-                System.out.println();
-                System.out.println(alphaArr[i]);
-                if (alphaArr[i].contains("2")) {
-                    moveByInput(alphaArr[i].substring(0, 1));
-                    moveByInput(alphaArr[i].substring(0, 1));
-                } else {
-                    moveByInput(alphaArr[i]);
-                }
-                printCube();
-                num++;
-            }
+            move(alphaArr, num);
         }
     }
 
@@ -109,7 +97,20 @@ public class RubiksCube {
         }
     }
 
-   
+    private void move(String[] alphaArr, int num){
+        for (int i = 0; i < alphaArr.length; i++) {
+            System.out.println();
+            System.out.println(alphaArr[i]);
+            if (alphaArr[i].contains("2")) {
+                moveByInput(alphaArr[i].substring(0, 1));
+                moveByInput(alphaArr[i].substring(0, 1));
+            } else {
+                moveByInput(alphaArr[i]);
+            }
+            printCube();
+            num++;
+        }
+    }
 
     private void getArrSize(String input) {
         int alphabet = 0;
