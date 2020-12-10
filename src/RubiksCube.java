@@ -87,10 +87,10 @@ public class RubiksCube {
                 System.out.println();
                 System.out.println(alphaArr[i]);
                 if (alphaArr[i].contains("2")) {
-                    move(alphaArr[i].substring(0, 1));
-                    move(alphaArr[i].substring(0, 1));
+                    moveByInput(alphaArr[i].substring(0, 1));
+                    moveByInput(alphaArr[i].substring(0, 1));
                 } else {
-                    move(alphaArr[i]);
+                    moveByInput(alphaArr[i]);
                 }
                 printCube();
                 num++;
@@ -109,7 +109,55 @@ public class RubiksCube {
         }
     }
 
-    private void move(String s) {
+   
+
+    private void getArrSize(String input) {
+        int alphabet = 0;
+
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == 'F' || input.charAt(i) == 'R'
+                    || input.charAt(i) == 'U' || input.charAt(i) == 'B'
+                    || input.charAt(i) == 'L' || input.charAt(i) == 'D') {
+                alphabet++;
+            }
+        }
+        alphaArr = new String[alphabet];
+    }
+
+    private String[] getAlphaArr(String input) {
+        int j = 0;
+
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == '\'' || input.charAt(i) == '2') {
+                continue;
+            }
+            if (i == input.length() - 1) {
+                alphaArr[j] = String.valueOf(input.charAt(i));
+                continue;
+            }
+            // input의 마지막 글자가 아니고, 다음 글자에 " ' " 나 "2" 유무 여부에 따라 alphaArr에 값 넣기
+            if (i != input.length() - 1 &&
+                    (input.charAt(i + 1) != '\'' || input.charAt(i + 1) != '2')) {
+                alphaArr[j] = input.substring(i, i + 1);
+            }
+            if (i != input.length() - 1 &&
+                    (input.charAt(i + 1) == '\'' || input.charAt(i + 1) == '2')) {
+                alphaArr[j] = input.substring(i, i + 2);
+            }
+            j++;
+        }
+        return alphaArr;
+    }
+
+    private void addElement(int z, char a) {
+        for (int i = 0; i < cube[z].length; i++) {
+            for (int j = 0; j < cube[z][i].length; j++) {
+                cube[z][i][j] = a;
+            }
+        }
+    }
+
+    private void moveByInput(String s) {
         switch (s) {
             case "F":
                 turnClock(2);
@@ -159,52 +207,6 @@ public class RubiksCube {
                 turnAntiClock(5);
                 moveDtoL();
                 break;
-        }
-    }
-
-    private void getArrSize(String input) {
-        int alphabet = 0;
-
-        for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) == 'F' || input.charAt(i) == 'R'
-                    || input.charAt(i) == 'U' || input.charAt(i) == 'B'
-                    || input.charAt(i) == 'L' || input.charAt(i) == 'D') {
-                alphabet++;
-            }
-        }
-        alphaArr = new String[alphabet];
-    }
-
-    private String[] getAlphaArr(String input) {
-        int j = 0;
-
-        for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) == '\'' || input.charAt(i) == '2') {
-                continue;
-            }
-            if (i == input.length() - 1) {
-                alphaArr[j] = String.valueOf(input.charAt(i));
-                continue;
-            }
-            // input의 마지막 글자가 아니고, 다음 글자에 " ' " 나 "2" 유무 여부에 따라 alphaArr에 값 넣기
-            if (i != input.length() - 1 &&
-                    (input.charAt(i + 1) != '\'' || input.charAt(i + 1) != '2')) {
-                alphaArr[j] = input.substring(i, i + 1);
-            }
-            if (i != input.length() - 1 &&
-                    (input.charAt(i + 1) == '\'' || input.charAt(i + 1) == '2')) {
-                alphaArr[j] = input.substring(i, i + 2);
-            }
-            j++;
-        }
-        return alphaArr;
-    }
-
-    private void addElement(int z, char a) {
-        for (int i = 0; i < cube[z].length; i++) {
-            for (int j = 0; j < cube[z][i].length; j++) {
-                cube[z][i][j] = a;
-            }
         }
     }
 
