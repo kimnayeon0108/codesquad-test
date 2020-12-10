@@ -75,14 +75,14 @@ public class RubiksCube {
 
     private void start() {
         int num = 0;
-
         while (true) {
             getInput(num);
             if (end) return;
 
             getArrSize(this.input);
             getAlphaArr(this.input);
-            move(alphaArr, num);
+            move(alphaArr);
+            num += alphaArr.length;
         }
     }
 
@@ -97,7 +97,7 @@ public class RubiksCube {
         }
     }
 
-    private void move(String[] alphaArr, int num){
+    private void move(String[] alphaArr){
         for (int i = 0; i < alphaArr.length; i++) {
             System.out.println();
             System.out.println(alphaArr[i]);
@@ -108,7 +108,6 @@ public class RubiksCube {
                 moveByInput(alphaArr[i]);
             }
             printCube();
-            num++;
         }
     }
 
