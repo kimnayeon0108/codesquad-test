@@ -408,28 +408,21 @@ public class RubiksCube {
         char[] temp1 = new char[3];
         char[] temp2 = new char[3];
         char[] temp3 = new char[3];
-        // 0행 -> temp1
         for (int i = 0; i < cube[page].length; i++) {
+            // 0행 -> temp1
             temp1[i] = cube[page][0][i];
-        }
-        // 1행 -> temp2
-        for(int i =0; i < cube[page].length; i++){
+            // 1행 -> temp2
             temp2[i] = cube[page][1][i];
-        }
-        // 2행 -> temp3
-        for(int i =0; i < cube[page].length; i++){
+            // 2행 -> temp3
             temp3[i] = cube[page][2][i];
         }
-        // temp1 -> 2열
+
         for (int i = 0; i < cube[page].length; i++) {
+            // temp1 -> 2열
             cube[page][i][2] = temp1[i];
-        }
-        // temp2 -> 1열
-        for (int i = 0; i < cube[page].length; i++) {
+            // temp2 -> 1열
             cube[page][i][1] = temp2[i];
-        }
-        // temp3 -> 0열
-        for (int i = 0; i < cube[page].length; i++) {
+            // temp3 -> 0열
             cube[page][i][0] = temp3[i];
         }
     }
