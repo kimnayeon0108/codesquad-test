@@ -7,10 +7,9 @@ public class RubiksCube {
     private Scanner s = new Scanner(System.in);
 
     private RubiksCube() {
-//        getCube();
-//        printCube();
+        getCube();
+        printCube();
         start();
-
     }
 
     private void start() {
@@ -29,7 +28,12 @@ public class RubiksCube {
             for (int i = 0; i < alphaArr.length; i++) {
                 System.out.println();
                 System.out.println(alphaArr[i]);
-//                move(alphaArr[i]);
+                if(alphaArr[i].contains("2")){
+                    move(alphaArr[i]);
+                    move(alphaArr[i]);
+                } else {
+                    move(alphaArr[i]);
+                }
             }
         }
     }
