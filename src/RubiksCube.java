@@ -7,9 +7,34 @@ public class RubiksCube {
     private Scanner s = new Scanner(System.in);
 
     private RubiksCube() {
-        getCube();
+        for (int z = 0; z < cube.length; z++) {
+            getCube(z);
+        }
         printCube();
         start();
+    }
+
+    private void getCube(int z) {
+        switch (z) {
+            case 0:
+                addElement(z, 'B');
+                break;
+            case 1:
+                addElement(z, 'W');
+                break;
+            case 2:
+                addElement(z, 'O');
+                break;
+            case 3:
+                addElement(z, 'G');
+                break;
+            case 4:
+                addElement(z, 'Y');
+                break;
+            case 5:
+                addElement(z, 'R');
+                break;
+        }
     }
 
     private void start() {
@@ -31,8 +56,8 @@ public class RubiksCube {
                 System.out.println();
                 System.out.println(alphaArr[i]);
                 if (alphaArr[i].contains("2")) {
-                    move(alphaArr[i].substring(0,1));
-                    move(alphaArr[i].substring(0,1));
+                    move(alphaArr[i].substring(0, 1));
+                    move(alphaArr[i].substring(0, 1));
                 } else {
                     move(alphaArr[i]);
                 }
@@ -131,31 +156,6 @@ public class RubiksCube {
             j++;
         }
         return alphaArr;
-    }
-
-    private void getCube() {
-        for (int z = 0; z < cube.length; z++) {
-            switch (z) {
-                case 0:
-                    addElement(z, 'B');
-                    break;
-                case 1:
-                    addElement(z, 'W');
-                    break;
-                case 2:
-                    addElement(z, 'O');
-                    break;
-                case 3:
-                    addElement(z, 'G');
-                    break;
-                case 4:
-                    addElement(z, 'Y');
-                    break;
-                case 5:
-                    addElement(z, 'R');
-                    break;
-            }
-        }
     }
 
     private void addElement(int z, char a) {
