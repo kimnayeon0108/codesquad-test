@@ -38,6 +38,14 @@ public class RubiksCube {
         }
     }
 
+    private void addElement(int z, char a) {
+        for (int i = 0; i < cube[z].length; i++) {
+            for (int j = 0; j < cube[z][i].length; j++) {
+                cube[z][i][j] = a;
+            }
+        }
+    }
+
     private void printCube() {
         // B면 출력
         printPage(0);
@@ -79,9 +87,10 @@ public class RubiksCube {
             getInput(num);
             if (end) return;
 
-            getArrSize(this.input);
-            getAlphaArr(this.input);
+            getArrSize(input);
+            getAlphaArr(input);
             move(alphaArr);
+
             num += alphaArr.length;
         }
     }
@@ -94,20 +103,6 @@ public class RubiksCube {
             System.out.println("조작개수: " + num);
             System.out.println("이용해주셔서 감사합니다.");
             end = true;
-        }
-    }
-
-    private void move(String[] alphaArr){
-        for (int i = 0; i < alphaArr.length; i++) {
-            System.out.println();
-            System.out.println(alphaArr[i]);
-            if (alphaArr[i].contains("2")) {
-                moveByInput(alphaArr[i].substring(0, 1));
-                moveByInput(alphaArr[i].substring(0, 1));
-            } else {
-                moveByInput(alphaArr[i]);
-            }
-            printCube();
         }
     }
 
@@ -149,11 +144,17 @@ public class RubiksCube {
         return alphaArr;
     }
 
-    private void addElement(int z, char a) {
-        for (int i = 0; i < cube[z].length; i++) {
-            for (int j = 0; j < cube[z][i].length; j++) {
-                cube[z][i][j] = a;
+    private void move(String[] alphaArr){
+        for (int i = 0; i < alphaArr.length; i++) {
+            System.out.println();
+            System.out.println(alphaArr[i]);
+            if (alphaArr[i].contains("2")) {
+                moveByInput(alphaArr[i].substring(0, 1));
+                moveByInput(alphaArr[i].substring(0, 1));
+            } else {
+                moveByInput(alphaArr[i]);
             }
+            printCube();
         }
     }
 
