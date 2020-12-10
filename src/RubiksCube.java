@@ -192,13 +192,13 @@ public class RubiksCube {
             cube[1][i][2] = cube[5][0][i];
 
             // 3면 -> 5면으로
-            cube[5][0][i] = cube[3][i][2-i];
+            cube[5][0][i] = cube[3][i][2 - i];
 
             // 0면 -> 3면으로
             cube[3][i][0] = cube[0][2][i];
 
             // temp 값 -> 0면으로
-            cube[0][2][2-i] = temp[i];
+            cube[0][2][2 - i] = temp[i];
         }
         printCube();
     }
@@ -231,9 +231,9 @@ public class RubiksCube {
             // 5면의 2열 -> 2면의 2열로
             cube[2][i][2] = cube[5][i][2];
             // 4면의 0열 -> 5면의 2열로
-            cube[5][i][2] = cube[4][i][0];
+            cube[5][i][2] = cube[4][2-i][0];
             // 0면의 2열 -> 4면의 0열로
-            cube[4][i][0] = cube[0][i][2];
+            cube[4][i][0] = cube[0][2-i][2];
             // temp 값 -> 0면의 2열로
             cube[0][i][2] = temp[i];
         }
