@@ -7,8 +7,8 @@ public class RubiksCube {
     private Scanner s = new Scanner(System.in);
 
     private RubiksCube() {
-        getCube();
-        printCube();
+//        getCube();
+//        printCube();
         start();
 
     }
@@ -26,11 +26,10 @@ public class RubiksCube {
             getArrSize(this.input);
             getAlphaArr(this.input);
 
-
             for (int i = 0; i < alphaArr.length; i++) {
                 System.out.println();
                 System.out.println(alphaArr[i]);
-                move(alphaArr[i]);
+//                move(alphaArr[i]);
             }
         }
     }
@@ -88,30 +87,6 @@ public class RubiksCube {
         }
     }
 
-    private String[] getAlphaArr(String input) {
-        int j = 0;
-
-        for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) == '\'') {
-                continue;
-            }
-            // input의 마지막 글자가 아니고, 다음 글자에 " ' " 유무 여부에 따라 alphaArr에 값 넣기
-            if (i != input.length() - 1 && input.charAt(i + 1) != '\'') {
-                alphaArr[j] = input.substring(i, i + 1);
-                j++;
-            }
-            if (i != input.length() - 1 && input.charAt(i + 1) == '\'') {
-                alphaArr[j] = input.substring(i, i + 2);
-                j++;
-            }
-
-            if (i == input.length() - 1) {
-                alphaArr[j] = String.valueOf(input.charAt(i));
-            }
-        }
-        return alphaArr;
-    }
-
     private void getArrSize(String input) {
         int alphabet = 0;
 
@@ -123,6 +98,31 @@ public class RubiksCube {
             }
         }
         alphaArr = new String[alphabet];
+    }
+
+    private String[] getAlphaArr(String input) {
+        int j = 0;
+
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == '\'' || input.charAt(i) == '2') {
+                continue;
+            }
+            if (i == input.length() - 1) {
+                alphaArr[j] = String.valueOf(input.charAt(i));
+                continue;
+            }
+            // input의 마지막 글자가 아니고, 다음 글자에 " ' " 나 "2" 유무 여부에 따라 alphaArr에 값 넣기
+            if (i != input.length() - 1 &&
+                    (input.charAt(i + 1) != '\'' || input.charAt(i + 1) != '2')) {
+                alphaArr[j] = input.substring(i, i + 1);
+            }
+            if (i != input.length() - 1 &&
+                    (input.charAt(i + 1) == '\'' || input.charAt(i + 1) == '2')) {
+                alphaArr[j] = input.substring(i, i + 2);
+            }
+            j++;
+        }
+        return alphaArr;
     }
 
     private void getCube() {
