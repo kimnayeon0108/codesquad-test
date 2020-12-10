@@ -37,39 +37,51 @@ public class RubiksCube {
     private void move(String s) {
         switch (s) {
             case "F":
+                turnClock(2);
                 moveFtoL();
                 break;
             case "F'":
+                turnAntiClock(2);
                 moveFtoR();
                 break;
             case "R":
+                turnClock(3);
                 moveRtoL();
                 break;
             case "R'":
+                turnAntiClock(3);
                 moveRtoR();
                 break;
             case "U":
+                turnClock(0);
                 moveUtoL();
                 break;
             case "U'":
+                turnAntiClock(0);
                 moveUtoR();
                 break;
             case "B":
+                turnClock(4);
                 moveBtoR();
                 break;
             case "B'":
+                turnAntiClock(4);
                 moveBtoL();
                 break;
             case "L":
+                turnClock(1);
                 moveLtoR();
                 break;
             case "L'":
+                turnAntiClock(1);
                 moveLtoL();
                 break;
             case "D":
+                turnClock(5);
                 moveDtoR();
                 break;
             case "D'":
+                turnAntiClock(5);
                 moveDtoL();
                 break;
         }
@@ -181,8 +193,6 @@ public class RubiksCube {
     }
 
     private void moveFtoL() {
-        turnClock(2);
-
         char[] temp = new char[3];
         // 1면 값 temp 에 저장
         for (int i = 0; i < temp.length; i++) {
@@ -209,7 +219,6 @@ public class RubiksCube {
 
     private void moveFtoR() {
         char[] temp = new char[3];
-
         for (int i = 0; i < temp.length; i++) {
             // 1면 값 temp 에 저장
             temp[i] = cube[1][i][2];
@@ -226,7 +235,6 @@ public class RubiksCube {
     }
 
     private void moveRtoL() {
-        turnClock(3);
         char[] temp = new char[3];
         // 2면의 2열 temp 에 담기
         for (int i = 0; i < temp.length; i++) {
