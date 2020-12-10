@@ -82,21 +82,6 @@ CUBE> Q
     - Yellow : cube[4] 페이지
     - Red : cube[5] 페이지
 
-    ```
-    							<cube[0]>
-                    B B B  
-                    B B B
-                    B B B
-    <cube[1]> <cube[2]> <cube[3]> <cube[4]>
-     W W W     O O O     G G G     Y Y Y 
-     W W W     O O O     G G G     Y Y Y 
-     W W W     O O O     G G G     Y Y Y 
-    							<cube[5]>
-                    R R R 
-                    R R R 
-                    R R R 
-    ```
-
   <img width="650" alt="스크린샷 2020-12-10 오후 8 49 39" src="https://user-images.githubusercontent.com/65011131/101780178-8aa25080-3b39-11eb-8b4f-3dfa9436e5bf.png">
     출처: [https://rubiks-cube-solver.com/ko/](https://rubiks-cube-solver.com/ko/)
 
