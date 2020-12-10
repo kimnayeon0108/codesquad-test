@@ -28,9 +28,10 @@ public class RubiksCube {
             for (int i = 0; i < alphaArr.length; i++) {
                 System.out.println();
                 System.out.println(alphaArr[i]);
-                if(alphaArr[i].contains("2")){
-                    move(alphaArr[i]);
-                    move(alphaArr[i]);
+                // Todo: 이부분 고치기
+                if (alphaArr[i].contains("2")) {
+                    move(alphaArr[i].substring(0,1));
+                    move(alphaArr[i].substring(0,1));
                 } else {
                     move(alphaArr[i]);
                 }
