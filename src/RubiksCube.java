@@ -9,11 +9,8 @@ public class RubiksCube {
     private RubiksCube() {
         getCube();
         printCube();
-//        start();
-        turnClock(3);
-        moveRtoL();
-        turnAntiClock(2);
-        moveFtoR();
+        start();
+
     }
 
     private void start() {
@@ -44,7 +41,7 @@ public class RubiksCube {
                 turnClock(2);
                 moveFtoL();
                 break;
-            case "F\'":
+            case "F'":
                 turnAntiClock(2);
                 moveFtoR();
                 break;
@@ -298,16 +295,24 @@ public class RubiksCube {
 
     private void moveUtoL() {
         char[] temp = new char[3];
+        // 1면의 0행 temp 값에 담기
         for (int i = 0; i < temp.length; i++) {
-            // 1면의 0행 temp 값에 담기
             temp[i] = cube[1][0][i];
-            // 2면의 0행 -> 1면의 0행으로
+        }
+        // 2면의 0행 -> 1면의 0행으로
+        for (int i = 0; i < temp.length; i++) {
             cube[1][0][i] = cube[2][0][i];
-            // 3면의 0행 -> 2면의 0행으로
+        }
+        // 3면의 0행 -> 2면의 0행으로
+        for (int i = 0; i < temp.length; i++) {
             cube[2][0][i] = cube[3][0][i];
-            // 4면의 0행 -> 3면의 0행으로
+        }
+        // 4면의 0행 -> 3면의 0행으로
+        for (int i = 0; i < temp.length; i++) {
             cube[3][0][i] = cube[4][0][i];
-            // temp -> 4면의 0행으로
+        }
+        // temp -> 4면의 0행으로
+        for (int i = 0; i < temp.length; i++) {
             cube[4][0][i] = temp[i];
         }
         printCube();
