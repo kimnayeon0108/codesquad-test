@@ -14,7 +14,7 @@ public class RubiksCube {
 
     private void start() {
         while (true) {
-            System.out.print("\nCUBE (종료하려면 \'Q\'를 입력하세요.> ");
+            System.out.print("\nCUBE> ");
             this.input = s.nextLine();
 
             if (input.equalsIgnoreCase("Q")) {
@@ -73,9 +73,7 @@ public class RubiksCube {
                 moveDtoL();
                 break;
         }
-        printCube();
     }
-
 
     private String[] getAlphaArr(String input) {
         int j = 0;
@@ -183,8 +181,9 @@ public class RubiksCube {
     }
 
     private void moveFtoL() {
-        char[] temp = new char[3];
+        turnClock(2);
 
+        char[] temp = new char[3];
         for (int i = 0; i < temp.length; i++) {
             // 1면 값 temp 에 저장
             temp[i] = cube[1][i][2];
@@ -193,13 +192,13 @@ public class RubiksCube {
             cube[1][i][2] = cube[5][0][i];
 
             // 3면 -> 5면으로
-            cube[5][0][i] = cube[3][i][0];
+            cube[5][0][i] = cube[3][i][2-i];
 
             // 0면 -> 3면으로
             cube[3][i][0] = cube[0][2][i];
 
             // temp 값 -> 0면으로
-            cube[0][2][i] = temp[i];
+            cube[0][2][2-i] = temp[i];
         }
         printCube();
     }
@@ -223,6 +222,8 @@ public class RubiksCube {
     }
 
     private void moveRtoL() {
+        turnClock(3);
+
         char[] temp = new char[3];
         for (int i = 0; i < temp.length; i++) {
             // 2면의 2열 temp 에 담기
@@ -392,8 +393,21 @@ public class RubiksCube {
         printCube();
     }
 
+    private void turnClock(int page) {
+        char[] temp = new char[3];
+        for (int i = 0; i < cube[page].length; i++) {
+            // 0행 -> temp
+            temp[i] = cube[page][0][i];
+            // 2행 -> 0열
+            cube[page][i][0] = cube[page][2][i];
+            // 1행 -> 1열
+            cube[page][i][1] = cube[page][1][i];
+            // temp -> 2열
+            cube[page][i][2] = temp[i];
+        }
+    }
+
     public static void main(String[] args) {
         RubiksCube r = new RubiksCube();
-        r.moveDtoL();
     }
 }
