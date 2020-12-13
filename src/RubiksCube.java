@@ -105,7 +105,6 @@ public class RubiksCube {
         this.input = s.nextLine();
 
         if (input.equalsIgnoreCase("Q")) {
-            Date today = new Date();
             SimpleDateFormat formatter = new SimpleDateFormat("mm:ss");
 
             long endTime = System.currentTimeMillis();
