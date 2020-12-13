@@ -124,35 +124,6 @@ public class RubiksCube {
         }
     }
 
-    private void comparePage(char[][][] originalCube, char[][][] initialCube) {
-        for (int i = 0; i < originalCube.length; i++) {
-            compareElements(i);
-            if(!same){
-                return;
-            }
-        }
-
-        if(same){
-            System.out.println("축하합니다! 모든 큐브를 맞추었습니다.");
-            finalizeProgram();
-            end = true;
-        }
-    }
-
-    private boolean compareElements(int i) {
-        for (int j = 0; j < originalCube[i].length; j++) {
-            for (int z = 0; z < originalCube[i][j].length; z++) {
-                if (initialCube[i][j][z] == originalCube[i][j][z]) {
-                    this.same = true;
-                }
-                if (initialCube[i][j][z] != originalCube[i][j][z]) {
-                   return this.same = false;
-                }
-            }
-        }
-        return same;
-    }
-
     private void getInput() {
         System.out.print("CUBE> ");
         this.input = s.nextLine();
@@ -161,6 +132,15 @@ public class RubiksCube {
             finalizeProgram();
             end = true;
         }
+    }
+
+    private void finalizeProgram() {
+        SimpleDateFormat formatter = new SimpleDateFormat("mm:ss");
+
+        long endTime = System.currentTimeMillis();
+        System.out.println("경과시간: " + formatter.format(endTime - startTime));
+        System.out.println("조작개수: " + num);
+        System.out.println("이용해주셔서 감사합니다.");
     }
 
     private void randomMix() {
@@ -173,15 +153,6 @@ public class RubiksCube {
             moveByInput(commandArr[rand.nextInt(18)], originalCube);
         }
         printCube(originalCube);
-    }
-
-    private void finalizeProgram() {
-        SimpleDateFormat formatter = new SimpleDateFormat("mm:ss");
-
-        long endTime = System.currentTimeMillis();
-        System.out.println("경과시간: " + formatter.format(endTime - startTime));
-        System.out.println("조작개수: " + num);
-        System.out.println("이용해주셔서 감사합니다.");
     }
 
     private void getArrSize(String input) {
@@ -621,6 +592,35 @@ public class RubiksCube {
             // temp3 -> 2열
             cube[page][2 - i][2] = temp3[i];
         }
+    }
+
+    private void comparePage(char[][][] originalCube, char[][][] initialCube) {
+        for (int i = 0; i < originalCube.length; i++) {
+            compareElements(i);
+            if(!same){
+                return;
+            }
+        }
+
+        if(same){
+            System.out.println("축하합니다! 모든 큐브를 맞추었습니다.");
+            finalizeProgram();
+            end = true;
+        }
+    }
+
+    private boolean compareElements(int i) {
+        for (int j = 0; j < originalCube[i].length; j++) {
+            for (int z = 0; z < originalCube[i][j].length; z++) {
+                if (initialCube[i][j][z] == originalCube[i][j][z]) {
+                    this.same = true;
+                }
+                if (initialCube[i][j][z] != originalCube[i][j][z]) {
+                    return this.same = false;
+                }
+            }
+        }
+        return same;
     }
 
     public static void main(String[] args) {
