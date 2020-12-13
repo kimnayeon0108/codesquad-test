@@ -7,7 +7,7 @@ public class FlatCube {
     private String input;
     private String[] alphaArr;
 
-    private final Scanner s = new Scanner(System.in);
+    private Scanner s = new Scanner(System.in);
 
     public FlatCube() {
         printCube();
