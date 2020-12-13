@@ -112,13 +112,8 @@ public class RubiksCube {
         this.input = s.nextLine();
 
         if (input.equalsIgnoreCase("Q")) {
-            SimpleDateFormat formatter = new SimpleDateFormat("mm:ss");
-
-            long endTime = System.currentTimeMillis();
-            System.out.println("경과시간: " + formatter.format(endTime - startTime));
-            System.out.println("조작개수: " + num);
-            System.out.println("이용해주셔서 감사합니다.");
-            end = true;
+           finalizeProgram(num);
+           end = true;
         }
     }
 
@@ -132,6 +127,15 @@ public class RubiksCube {
            moveByInput(commandArr[rand.nextInt(18)]);
         }
         printCube();
+    }
+
+    private void finalizeProgram(int num){
+        SimpleDateFormat formatter = new SimpleDateFormat("mm:ss");
+
+        long endTime = System.currentTimeMillis();
+        System.out.println("경과시간: " + formatter.format(endTime - startTime));
+        System.out.println("조작개수: " + num);
+        System.out.println("이용해주셔서 감사합니다.");
     }
 
     private void getArrSize(String input) {
