@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class RubiksCube {
     private char[][][] cube = new char[6][3][3];
-    private char[][][] initialCube = new char[6][3][3];
+    private char[][][] initialCube;
     private String input;
     private String[] alphaArr;
     private boolean end = false;
@@ -17,6 +17,8 @@ public class RubiksCube {
         for (int z = 0; z < cube.length; z++) {
             getCube(z);
         }
+        getInitialCube();
+        
         printCube(cube);
         start();
     }
@@ -42,7 +44,6 @@ public class RubiksCube {
                 addElement(z, 'R');
                 break;
         }
-
     }
 
     private char[][][] addElement(int z, char a) {
@@ -54,21 +55,33 @@ public class RubiksCube {
         return cube;
     }
 
+    private char[][][] getInitialCube(){
+        initialCube = new char[6][3][3];
+        for (int i = 0; i < cube.length; i++) {
+            for (int j = 0; j < cube[i].length; j++) {
+                for(int z = 0; z < cube[i][j].length; z++){
+                    initialCube[i][j][z] = cube[i][j][z];
+                }
+            }
+        }
+        return initialCube;
+    }
+
     private void printCube(char[][][] cube) {
         // B면 출력
-        printPage(0);
+        printPage(0, cube);
 
         // W, O, G, Y 면 출력
         for (int i = 0; i < cube[0].length; i++) {
-            printFourP(i);
+            printFourP(i, cube);
         }
         System.out.println();
 
         // R면 출력
-        printPage(5);
+        printPage(5, cube);
     }
 
-    private void printPage(int a) {
+    private void printPage(int a, char[][][] cube) {
         for (int i = 0; i < cube[a].length; i++) {
             System.out.print("          ");
             for (int j = 0; j < cube[a][i].length; j++) {
@@ -79,7 +92,7 @@ public class RubiksCube {
         System.out.println();
     }
 
-    private void printFourP(int i) {
+    private void printFourP(int i, char[][][] cube) {
         for (int j = 1; j < cube.length - 1; j++) {
             for (int z = 0; z < cube[j][i].length; z++) {
                 System.out.print(cube[j][i][z] + " ");
@@ -103,7 +116,7 @@ public class RubiksCube {
 
             getArrSize(input);
             getAlphaArr(input);
-            move(alphaArr);
+            move(alphaArr, cube);
 
             num += alphaArr.length;
         }
@@ -114,24 +127,24 @@ public class RubiksCube {
         this.input = s.nextLine();
 
         if (input.equalsIgnoreCase("Q")) {
-           finalizeProgram(num);
-           end = true;
+            finalizeProgram(num);
+            end = true;
         }
     }
 
     private void randomMix() {
         String[] commandArr = {"F", "F'", "R", "R'", "U", "U'",
-                              "B", "B'", "L", "L'", "D", "D'",
-                              "F2", "R2", "U2", "B2", "L2", "D2"};
+                "B", "B'", "L", "L'", "D", "D'",
+                "F2", "R2", "U2", "B2", "L2", "D2"};
         Random rand = new Random();
 
-        for(int i = 0; i < 10; i++){
-           moveByInput(commandArr[rand.nextInt(18)]);
+        for (int i = 0; i < 10; i++) {
+            moveByInput(commandArr[rand.nextInt(18)], cube);
         }
         printCube(cube);
     }
 
-    private void finalizeProgram(int num){
+    private void finalizeProgram(int num) {
         SimpleDateFormat formatter = new SimpleDateFormat("mm:ss");
 
         long endTime = System.currentTimeMillis();
@@ -178,74 +191,74 @@ public class RubiksCube {
         return alphaArr;
     }
 
-    private void move(String[] alphaArr) {
+    private void move(String[] alphaArr, char[][][] cube) {
         for (int i = 0; i < alphaArr.length; i++) {
             System.out.println();
             System.out.println(alphaArr[i]);
             if (alphaArr[i].contains("2")) {
-                moveByInput(alphaArr[i].substring(0, 1));
-                moveByInput(alphaArr[i].substring(0, 1));
+                moveByInput(alphaArr[i].substring(0, 1), cube);
+                moveByInput(alphaArr[i].substring(0, 1), cube);
             } else {
-                moveByInput(alphaArr[i]);
+                moveByInput(alphaArr[i], cube);
             }
             printCube(cube);
         }
     }
 
-    private void moveByInput(String s) {
+    private void moveByInput(String s, char[][][] cube) {
         switch (s) {
             case "F":
-                turnClock(2);
-                moveFtoL();
+                turnClock(2, cube);
+                moveFtoL(cube);
                 break;
             case "F'":
-                turnAntiClock(2);
-                moveFtoR();
+                turnAntiClock(2, cube);
+                moveFtoR(cube);
                 break;
             case "R":
-                turnClock(3);
-                moveRtoL();
+                turnClock(3, cube);
+                moveRtoL(cube);
                 break;
             case "R'":
-                turnAntiClock(3);
-                moveRtoR();
+                turnAntiClock(3, cube);
+                moveRtoR(cube);
                 break;
             case "U":
-                turnClock(0);
-                moveUtoL();
+                turnClock(0, cube);
+                moveUtoL(cube);
                 break;
             case "U'":
-                turnAntiClock(0);
-                moveUtoR();
+                turnAntiClock(0, cube);
+                moveUtoR(cube);
                 break;
             case "B":
-                turnClock(4);
-                moveBtoR();
+                turnClock(4, cube);
+                moveBtoR(cube);
                 break;
             case "B'":
-                turnAntiClock(4);
-                moveBtoL();
+                turnAntiClock(4, cube);
+                moveBtoL(cube);
                 break;
             case "L":
-                turnClock(1);
-                moveLtoR();
+                turnClock(1, cube);
+                moveLtoR(cube);
                 break;
             case "L'":
-                turnAntiClock(1);
-                moveLtoL();
+                turnAntiClock(1, cube);
+                moveLtoL(cube);
                 break;
             case "D":
-                turnClock(5);
-                moveDtoR();
+                turnClock(5, cube);
+                moveDtoR(cube);
                 break;
             case "D'":
-                turnAntiClock(5);
-                moveDtoL();
+                turnAntiClock(5, cube);
+                moveDtoL(cube);
                 break;
         }
     }
 
-    private void moveFtoL() {
+    private void moveFtoL(char[][][] cube) {
         char[] temp = new char[3];
         // 1면 값 temp 에 저장
         for (int i = 0; i < temp.length; i++) {
@@ -269,7 +282,7 @@ public class RubiksCube {
         }
     }
 
-    private void moveFtoR() {
+    private void moveFtoR(char[][][] cube) {
         char[] temp = new char[3];
         // 1면 값 temp 에 저장
         for (int i = 0; i < temp.length; i++) {
@@ -293,7 +306,7 @@ public class RubiksCube {
         }
     }
 
-    private void moveRtoL() {
+    private void moveRtoL(char[][][] cube) {
         char[] temp = new char[3];
         // 2면의 2열 temp 에 담기
         for (int i = 0; i < temp.length; i++) {
@@ -317,7 +330,7 @@ public class RubiksCube {
         }
     }
 
-    private void moveRtoR() {
+    private void moveRtoR(char[][][] cube) {
         char[] temp = new char[3];
         // 2면의 2열 temp 값으로
         for (int i = 0; i < temp.length; i++) {
@@ -341,7 +354,7 @@ public class RubiksCube {
         }
     }
 
-    private void moveUtoL() {
+    private void moveUtoL(char[][][] cube) {
         char[] temp = new char[3];
         // 1면의 0행 temp 값에 담기
         for (int i = 0; i < temp.length; i++) {
@@ -365,7 +378,7 @@ public class RubiksCube {
         }
     }
 
-    private void moveUtoR() {
+    private void moveUtoR(char[][][] cube) {
         char[] temp = new char[3];
         // 1면의 0행 -> temp
         for (int i = 0; i < temp.length; i++) {
@@ -389,7 +402,7 @@ public class RubiksCube {
         }
     }
 
-    private void moveBtoR() {
+    private void moveBtoR(char[][][] cube) {
         char[] temp = new char[3];
         // 1면의 0열 -> temp
         for (int i = 0; i < temp.length; i++) {
@@ -413,7 +426,7 @@ public class RubiksCube {
         }
     }
 
-    private void moveBtoL() {
+    private void moveBtoL(char[][][] cube) {
         char[] temp = new char[3];
         // 1면의 0열 -> temp
         for (int i = 0; i < temp.length; i++) {
@@ -437,7 +450,7 @@ public class RubiksCube {
         }
     }
 
-    private void moveLtoR() {
+    private void moveLtoR(char[][][] cube) {
         char[] temp = new char[3];
         // 2면의 0열 -> temp
         for (int i = 0; i < temp.length; i++) {
@@ -461,7 +474,7 @@ public class RubiksCube {
         }
     }
 
-    private void moveLtoL() {
+    private void moveLtoL(char[][][] cube) {
         char[] temp = new char[3];
         // 2면의 0열 → temp
         for (int i = 0; i < temp.length; i++) {
@@ -485,7 +498,7 @@ public class RubiksCube {
         }
     }
 
-    private void moveDtoR() {
+    private void moveDtoR(char[][][] cube) {
         char[] temp = new char[3];
         // 1면의 2행 → temp
         for (int i = 0; i < temp.length; i++) {
@@ -509,7 +522,7 @@ public class RubiksCube {
         }
     }
 
-    private void moveDtoL() {
+    private void moveDtoL(char[][][] cube) {
         char[] temp = new char[3];
         // 1면의 2행 → temp
         for (int i = 0; i < temp.length; i++) {
@@ -533,7 +546,7 @@ public class RubiksCube {
         }
     }
 
-    private void turnClock(int page) {
+    private void turnClock(int page, char[][][] cube) {
         char[] temp1 = new char[3];
         char[] temp2 = new char[3];
         char[] temp3 = new char[3];
@@ -556,7 +569,7 @@ public class RubiksCube {
         }
     }
 
-    private void turnAntiClock(int page) {
+    private void turnAntiClock(int page, char[][][] cube) {
         char[] temp1 = new char[3];
         char[] temp2 = new char[3];
         char[] temp3 = new char[3];
