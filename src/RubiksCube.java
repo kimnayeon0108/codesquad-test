@@ -1,10 +1,10 @@
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
 
 public class RubiksCube {
     private char[][][] cube = new char[6][3][3];
+    private char[][][] initialCube = new char[6][3][3];
     private String input;
     private String[] alphaArr;
     private boolean end = false;
@@ -44,12 +44,13 @@ public class RubiksCube {
         }
     }
 
-    private void addElement(int z, char a) {
+    private char[][][] addElement(int z, char a) {
         for (int i = 0; i < cube[z].length; i++) {
             for (int j = 0; j < cube[z][i].length; j++) {
                 cube[z][i][j] = a;
             }
         }
+        return cube;
     }
 
     private void printCube() {
