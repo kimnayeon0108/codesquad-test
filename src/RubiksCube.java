@@ -1,5 +1,6 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 import java.util.Scanner;
 
 public class RubiksCube {
@@ -91,6 +92,10 @@ public class RubiksCube {
         while (true) {
             getInput(num);
             if (end) return;
+            if (input.equals("1")) {
+                randomMix();
+                continue;
+            }
 
             getArrSize(input);
             getAlphaArr(input);
@@ -113,6 +118,18 @@ public class RubiksCube {
             System.out.println("이용해주셔서 감사합니다.");
             end = true;
         }
+    }
+
+    private void randomMix() {
+        String[] commandArr = {"F", "F'", "R", "R'", "U", "U'",
+                              "B", "B'", "L", "L'", "D", "D'",
+                              "F2", "R2", "U2", "B2", "L2", "D2"};
+        Random rand = new Random();
+
+        for(int i = 0; i < 10; i++){
+           moveByInput(commandArr[rand.nextInt(18)]);
+        }
+        printCube();
     }
 
     private void getArrSize(String input) {
@@ -153,7 +170,7 @@ public class RubiksCube {
         return alphaArr;
     }
 
-    private void move(String[] alphaArr){
+    private void move(String[] alphaArr) {
         for (int i = 0; i < alphaArr.length; i++) {
             System.out.println();
             System.out.println(alphaArr[i]);
