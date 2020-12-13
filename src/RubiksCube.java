@@ -89,6 +89,8 @@ public class RubiksCube {
 
     private void start() {
         int num = 0;
+
+        System.out.println("1을 누르면 큐브가 무작위로 섞입니다.(입력예시 : 1)");
         while (true) {
             getInput(num);
             if (end) return;
@@ -106,7 +108,7 @@ public class RubiksCube {
     }
 
     private void getInput(int num) {
-        System.out.print("\nCUBE> ");
+        System.out.print("CUBE> ");
         this.input = s.nextLine();
 
         if (input.equalsIgnoreCase("Q")) {
