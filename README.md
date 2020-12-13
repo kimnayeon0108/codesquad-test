@@ -65,6 +65,7 @@ CUBE> Q
 - 2단계보다 2개의 위치(F면과 D면)가 추가로 생겼다. (2단계의 B와 별개로 3단계에서 B는 아래가 아닌 Back 으로 간주)
 - 2차열 배열을 6개 만들까, 큐브의 각각 면 마다 클래스를 만들어야 하나 고민하다가 전체 큐브 면을 출력하기에 3차열 배열이 제일 알맞을 것 같다고 판단하였다.
 
+
 <img width="291" alt="스크린샷 2020-12-10 오후 8 24 50" src="https://user-images.githubusercontent.com/65011131/101779960-42832e00-3b39-11eb-8628-e055704c4f20.png">
 
 출처: [https://rubiks-cube-solver.com/ko/](https://rubiks-cube-solver.com/ko/)
@@ -96,7 +97,12 @@ CUBE> Q
 ### addElement()
 
 - 큐브 배열에 요소를 채우는 메소드
-- 매개변수로 받은 int z 값을 큐브의 페이지로 지정하고, 매개변수 char a 를 요소로 할당
+- 매개변수로 받은 int z 값을 큐브의 페이지로 지정하고, 매개변수 char a 를 요소로 할당    
+   
+### getInitialCube()
+
+- 큐브의 초기 상태와 동일한 initialCube를 생성한다.
+- initialCube는 나중에 comparePage() 함수 실행 시 모든 면을 맞추었는지 확인할 때 쓰이는 큐브 배열이다.
 
 ### printCube()
 
@@ -121,6 +127,10 @@ CUBE> Q
 
 - 사용자에게 조작 명령어를 입력 받는다.
 - Q를 입력할 시 매개변수로 받은 조작 개수(num)를 출력하고 프로그램을 종료한다.   
+   
+### finalizeProgram()
+
+- 프로그램 종료시 경과시간, 조작개수를 출력하는 메소드   
    
 ### randomMix()
 
@@ -282,3 +292,12 @@ CUBE> Q
     1. 0행 → 0열로
     2. 1행 → 1열로
     3. 2행 → 2열로
+   
+### comparePage()
+
+- originalCube 와 비교대상인 큐브의 초기상태(initialCube) 배열을 각 페이지마다 비교하는 메소드
+- 모든 페이지의 요소들이 같을 경우, 축하메시지와 함께 종료 메소드(finalizeProgram)를 실행한다.
+
+### compareElements()
+
+- 매개변수로 받은 정수를 배열의 페이지로 받아서 큐브 배열의 각 페이지마다 요소들을 비교해주는 메소드
