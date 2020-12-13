@@ -17,7 +17,7 @@ public class RubiksCube {
         for (int z = 0; z < cube.length; z++) {
             getCube(z);
         }
-        printCube();
+        printCube(cube);
         start();
     }
 
@@ -42,6 +42,7 @@ public class RubiksCube {
                 addElement(z, 'R');
                 break;
         }
+
     }
 
     private char[][][] addElement(int z, char a) {
@@ -53,7 +54,7 @@ public class RubiksCube {
         return cube;
     }
 
-    private void printCube() {
+    private void printCube(char[][][] cube) {
         // B면 출력
         printPage(0);
 
@@ -127,7 +128,7 @@ public class RubiksCube {
         for(int i = 0; i < 10; i++){
            moveByInput(commandArr[rand.nextInt(18)]);
         }
-        printCube();
+        printCube(cube);
     }
 
     private void finalizeProgram(int num){
@@ -187,7 +188,7 @@ public class RubiksCube {
             } else {
                 moveByInput(alphaArr[i]);
             }
-            printCube();
+            printCube(cube);
         }
     }
 
