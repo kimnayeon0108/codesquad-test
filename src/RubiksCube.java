@@ -3,7 +3,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class RubiksCube {
-    private char[][][] cube = new char[6][3][3];
+    private char[][][] originalCube = new char[6][3][3];
     private char[][][] initialCube;
     private String input;
     private String[] alphaArr;
@@ -14,12 +14,12 @@ public class RubiksCube {
     private RubiksCube() {
         startTime = System.currentTimeMillis();
 
-        for (int z = 0; z < cube.length; z++) {
+        for (int z = 0; z < originalCube.length; z++) {
             getCube(z);
         }
         getInitialCube();
-        
-        printCube(cube);
+
+        printCube(originalCube);
         start();
     }
 
@@ -47,20 +47,20 @@ public class RubiksCube {
     }
 
     private char[][][] addElement(int z, char a) {
-        for (int i = 0; i < cube[z].length; i++) {
-            for (int j = 0; j < cube[z][i].length; j++) {
-                cube[z][i][j] = a;
+        for (int i = 0; i < originalCube[z].length; i++) {
+            for (int j = 0; j < originalCube[z][i].length; j++) {
+                originalCube[z][i][j] = a;
             }
         }
-        return cube;
+        return originalCube;
     }
 
     private char[][][] getInitialCube(){
         initialCube = new char[6][3][3];
-        for (int i = 0; i < cube.length; i++) {
-            for (int j = 0; j < cube[i].length; j++) {
-                for(int z = 0; z < cube[i][j].length; z++){
-                    initialCube[i][j][z] = cube[i][j][z];
+        for (int i = 0; i < initialCube.length; i++) {
+            for (int j = 0; j < initialCube[i].length; j++) {
+                for(int z = 0; z < initialCube[i][j].length; z++){
+                    initialCube[i][j][z] = originalCube[i][j][z];
                 }
             }
         }
@@ -116,7 +116,7 @@ public class RubiksCube {
 
             getArrSize(input);
             getAlphaArr(input);
-            move(alphaArr, cube);
+            move(alphaArr, originalCube);
 
             num += alphaArr.length;
         }
@@ -139,9 +139,9 @@ public class RubiksCube {
         Random rand = new Random();
 
         for (int i = 0; i < 10; i++) {
-            moveByInput(commandArr[rand.nextInt(18)], cube);
+            moveByInput(commandArr[rand.nextInt(18)], originalCube);
         }
-        printCube(cube);
+        printCube(originalCube);
     }
 
     private void finalizeProgram(int num) {
