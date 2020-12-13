@@ -104,29 +104,29 @@ public class RubiksCube {
     }
 
     private void start() {
-        this.num = 0;
-
+        num = 0;
         System.out.println("1을 누르면 큐브가 무작위로 섞입니다.(입력예시 : 1)");
+
         while (true) {
-            getInput(num);
+            getInput();
             if (end) return;
             if (input.equals("1")) {
                 randomMix();
                 continue;
             }
-
             getArrSize(input);
             getAlphaArr(input);
             move(alphaArr, originalCube);
-            comparePage(originalCube,initialCube);
+            this.num += alphaArr.length;
 
-            num += alphaArr.length;
+            comparePage(originalCube,initialCube);
+            if (end) return;
         }
     }
 
     private void comparePage(char[][][] originalCube, char[][][] initialCube) {
         for (int i = 0; i < originalCube.length; i++) {
-            trueOrFalse(i);
+            compareElements(i);
             if(!same){
                 return;
             }
@@ -134,11 +134,12 @@ public class RubiksCube {
 
         if(same){
             System.out.println("축하합니다! 모든 큐브를 맞추었습니다.");
-            finalizeProgram(num);
+            finalizeProgram();
+            end = true;
         }
     }
 
-    private boolean trueOrFalse(int i) {
+    private boolean compareElements(int i) {
         for (int j = 0; j < originalCube[i].length; j++) {
             for (int z = 0; z < originalCube[i][j].length; z++) {
                 if (initialCube[i][j][z] == originalCube[i][j][z]) {
@@ -152,12 +153,12 @@ public class RubiksCube {
         return same;
     }
 
-    private void getInput(int num) {
+    private void getInput() {
         System.out.print("CUBE> ");
         this.input = s.nextLine();
 
         if (input.equalsIgnoreCase("Q")) {
-            finalizeProgram(num);
+            finalizeProgram();
             end = true;
         }
     }
@@ -174,7 +175,7 @@ public class RubiksCube {
         printCube(originalCube);
     }
 
-    private void finalizeProgram(int num) {
+    private void finalizeProgram() {
         SimpleDateFormat formatter = new SimpleDateFormat("mm:ss");
 
         long endTime = System.currentTimeMillis();
