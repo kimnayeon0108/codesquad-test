@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class RubiksCube {
@@ -5,9 +7,12 @@ public class RubiksCube {
     private String input;
     private String[] alphaArr;
     private boolean end = false;
+    private long startTime;
     private Scanner s = new Scanner(System.in);
 
     private RubiksCube() {
+        startTime = System.currentTimeMillis();
+
         for (int z = 0; z < cube.length; z++) {
             getCube(z);
         }
@@ -100,6 +105,11 @@ public class RubiksCube {
         this.input = s.nextLine();
 
         if (input.equalsIgnoreCase("Q")) {
+            Date today = new Date();
+            SimpleDateFormat formatter = new SimpleDateFormat("mm:ss");
+
+            long endTime = System.currentTimeMillis();
+            System.out.println("경과시간: " + formatter.format(endTime - startTime));
             System.out.println("조작개수: " + num);
             System.out.println("이용해주셔서 감사합니다.");
             end = true;
