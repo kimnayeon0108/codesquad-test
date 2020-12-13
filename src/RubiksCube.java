@@ -9,6 +9,8 @@ public class RubiksCube {
     private String[] alphaArr;
     private boolean end = false;
     private long startTime;
+    private int num;
+    private boolean same;
     private Scanner s = new Scanner(System.in);
 
     private RubiksCube() {
@@ -18,7 +20,6 @@ public class RubiksCube {
             getCube(z);
         }
         getInitialCube();
-
         printCube(originalCube);
         start();
     }
@@ -55,11 +56,11 @@ public class RubiksCube {
         return originalCube;
     }
 
-    private char[][][] getInitialCube(){
+    private char[][][] getInitialCube() {
         initialCube = new char[6][3][3];
         for (int i = 0; i < initialCube.length; i++) {
             for (int j = 0; j < initialCube[i].length; j++) {
-                for(int z = 0; z < initialCube[i][j].length; z++){
+                for (int z = 0; z < initialCube[i][j].length; z++) {
                     initialCube[i][j][z] = originalCube[i][j][z];
                 }
             }
@@ -103,7 +104,7 @@ public class RubiksCube {
     }
 
     private void start() {
-        int num = 0;
+        this.num = 0;
 
         System.out.println("1을 누르면 큐브가 무작위로 섞입니다.(입력예시 : 1)");
         while (true) {
@@ -117,9 +118,38 @@ public class RubiksCube {
             getArrSize(input);
             getAlphaArr(input);
             move(alphaArr, originalCube);
+            comparePage(originalCube,initialCube);
 
             num += alphaArr.length;
         }
+    }
+
+    private void comparePage(char[][][] originalCube, char[][][] initialCube) {
+        for (int i = 0; i < originalCube.length; i++) {
+            trueOrFalse(i);
+            if(!same){
+                return;
+            }
+        }
+
+        if(same){
+            System.out.println("축하합니다! 모든 큐브를 맞추었습니다.");
+            finalizeProgram(num);
+        }
+    }
+
+    private boolean trueOrFalse(int i) {
+        for (int j = 0; j < originalCube[i].length; j++) {
+            for (int z = 0; z < originalCube[i][j].length; z++) {
+                if (initialCube[i][j][z] == originalCube[i][j][z]) {
+                    this.same = true;
+                }
+                if (initialCube[i][j][z] != originalCube[i][j][z]) {
+                   return this.same = false;
+                }
+            }
+        }
+        return same;
     }
 
     private void getInput(int num) {
